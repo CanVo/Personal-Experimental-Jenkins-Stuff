@@ -18,7 +18,7 @@ public class HelloWorldBuilderTest {
     final String name = "Bobby";
     final String secretcode = "S E C R E T";
 
-    /*
+    
     @Test
     public void testConfigRoundtrip() throws Exception {
         FreeStyleProject project = jenkins.createFreeStyleProject();
@@ -38,7 +38,7 @@ public class HelloWorldBuilderTest {
         HelloWorldBuilder lhs = new HelloWorldBuilder(name, secretcode);
         lhs.setUseFrench(true);
         jenkins.assertEqualDataBoundBeans(lhs, project.getBuildersList().get(0));
-    }*/
+    }
 
     @Test
     public void testBuild() throws Exception {
