@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Built-By: ubuntu
+Created-By: Apache Maven
+Build-Jdk: 1.8.0_191
+Extension-Name: CanPlugin
+Specification-Title: TODO
+Implementation-Title: CanPlugin
+Implementation-Version: 1.0-SNAPSHOT
+Group-Id: io.jenkins.plugins
+Short-Name: CanPlugin
+Long-Name: TODO Plugin
+Plugin-Version: 1.0-SNAPSHOT (private-12/31/2018 15:56-ubuntu)
+Hudson-Version: 2.7.3
+Jenkins-Version: 2.7.3
+Plugin-Dependencies: structs:1.7
+Plugin-Developers: 
+
