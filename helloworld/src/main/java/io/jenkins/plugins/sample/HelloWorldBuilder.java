@@ -29,9 +29,37 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
     private boolean useFrench;
 
     @DataBoundConstructor
-    public HelloWorldBuilder(String name, String secretcode, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParamters, String smartCredentials, String networkCredentials, String networkAuthenicationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String cscanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) {
+    public HelloWorldBuilder(String name, String secretcode, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParamters, String smartCredentials, String networkCredentials, String networkAuthenicationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String scanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) {
         this.name = name;
         this.secretcode = secretcode;
+        this.settingsName = settingsName;
+        this.scanName = scanName;
+        this.startUrls = startUrls;
+        this.crawlAuditMode = crawlAuditMode;
+        this.sharedThreads = sharedThreads;
+        this.crawlThreads = crawlThreads;
+        this.auditThreads = auditThreads;
+        this.startOption = startOption;
+        this.loginMacro = loginMacro;
+        this.workFlowMacros = workFlowMacros;
+        this.tcMarcoParamters = tcMacroParamters;
+        this.smartCredentials = smartCredentials;
+        this.networkCredentials = networkCredentials;
+        this.networkAuthenicationMode = networkAuthenticationMode;
+        this.allowedHosts = allowedHosts;
+        this.policyID = policyID;
+        this.checkIDs = checkIDs;
+        this.dontStartScan = dontStartScan;
+        this.scanScope = scanScope;
+        this.scopedPaths = scopedPaths;
+        this.clientCertification = clientCertification;
+        this.storeName = storeName;
+        this.isGlobal = isGlobal;
+        this.serialNumber = serialNumber;
+        this.bytes = bytes;
+        this.reuseScan = reuseScan;
+        this.scanId = scanId;
+        this.mode = mode;
     }
 
     public String getName() {
