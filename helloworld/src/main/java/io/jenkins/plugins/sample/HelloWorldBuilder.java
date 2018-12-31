@@ -29,7 +29,7 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
     private boolean useFrench;
 
     @DataBoundConstructor
-    public HelloWorldBuilder(String name, String secretcode, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParamters, String smartCredentials, String networkCredentials, String networkAuthenicationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String scanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) {
+    public HelloWorldBuilder(String name, String secretcode, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParameters, String smartCredentials, String networkCredentials, String networkAuthenticationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String scanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) {
         this.name = name;
         this.secretcode = secretcode;
         this.settingsName = settingsName;
@@ -42,10 +42,10 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
         this.startOption = startOption;
         this.loginMacro = loginMacro;
         this.workFlowMacros = workFlowMacros;
-        this.tcMarcoParamters = tcMacroParamters;
+        this.tcMarcoParameters = tcMacroParameters;
         this.smartCredentials = smartCredentials;
         this.networkCredentials = networkCredentials;
-        this.networkAuthenicationMode = networkAuthenticationMode;
+        this.networkAuthenticationMode = networkAuthenticationMode;
         this.allowedHosts = allowedHosts;
         this.policyID = policyID;
         this.checkIDs = checkIDs;

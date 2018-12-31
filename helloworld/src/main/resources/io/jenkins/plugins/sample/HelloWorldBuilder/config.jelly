@@ -56,7 +56,7 @@
     	<f:textbox />
     </f:entry>
     
-    <f:entry title="StcMarcoParamters" field="tcMarcoParamters">
+    <f:entry title="tcMarcoParameters" field="tcMarcoParameters">
     	<f:textbox />
     </f:entry>
     
@@ -68,7 +68,7 @@
     	<f:textbox />
     </f:entry>
     
-    <f:entry title="networkAuthenicationMode" field="networkAuthenicationMode">
+    <f:entry title="networkAuthenticationMode" field="networkAuthenticationMode">
     	<f:textbox />
     </f:entry>
     
