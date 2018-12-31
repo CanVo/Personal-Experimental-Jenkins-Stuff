@@ -25,8 +25,9 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
     private boolean useFrench;
 
     @DataBoundConstructor
-    public HelloWorldBuilder(String name) {
+    public HelloWorldBuilder(String name, String test) {
         this.name = name;
+        this.test = test;
     }
 
     public String getName() {
