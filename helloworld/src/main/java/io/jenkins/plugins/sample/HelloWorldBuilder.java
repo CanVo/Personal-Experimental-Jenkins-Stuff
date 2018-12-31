@@ -23,7 +23,7 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
     private final String name;
     private final String secretcode;
     
-    private final String settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParamters, smartCredentials, networkCredentials, networkAuthenicationMode, allowedHosts, policyID, checkIDs, dontStartScan, cscanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
+    private final String settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
     
     
     private boolean useFrench;
@@ -32,6 +32,7 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
     public HelloWorldBuilder(String name, String secretcode, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParameters, String smartCredentials, String networkCredentials, String networkAuthenticationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String scanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) {
         this.name = name;
         this.secretcode = secretcode;
+        
         this.settingsName = settingsName;
         this.scanName = scanName;
         this.startUrls = startUrls;
@@ -42,7 +43,7 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
         this.startOption = startOption;
         this.loginMacro = loginMacro;
         this.workFlowMacros = workFlowMacros;
-        this.tcMarcoParameters = tcMacroParameters;
+        this.tcMarcoParameters = tcMarcoParameters;
         this.smartCredentials = smartCredentials;
         this.networkCredentials = networkCredentials;
         this.networkAuthenticationMode = networkAuthenticationMode;
