@@ -22,6 +22,10 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 
     private final String name;
     private final String secretcode;
+    
+    private final String settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParamters, smartCredentials, networkCredentials, networkAuthenicationMode, allowedHosts, policyID, checkIDs, dontStartScan, cscanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
+    
+    
     private boolean useFrench;
 
     @DataBoundConstructor
