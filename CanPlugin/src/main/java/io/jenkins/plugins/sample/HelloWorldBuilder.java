@@ -21,6 +21,7 @@ import org.kohsuke.stapler.DataBoundSetter;
 public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 
     private final String name;
+    private final String test;
     private boolean useFrench;
 
     @DataBoundConstructor
@@ -43,13 +44,33 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 
     @Override
     public void perform(Run<?, ?> run, FilePath workspace, Launcher launcher, TaskListener listener) throws InterruptedException, IOException {
-        if (useFrench) {
+        listener.getLogger().println("Red Red Wine: " + test);
+        
+    	if (useFrench) {
             listener.getLogger().println("Bonjour, " + name + "!");
         } else {
             listener.getLogger().println("Hello, " + name + "!");
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
+    
+    // This class is basically used for handling configuration of your Plugin. 
+    // When you click on “Configure” link on Jenkins it basically calls this method and loads the configured data.
     @Symbol("greet")
     @Extension
     public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
@@ -73,7 +94,8 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 
         @Override
         public String getDisplayName() {
-            return Messages.HelloWorldBuilder_DescriptorImpl_DisplayName();
+            //return Messages.HelloWorldBuilder_DescriptorImpl_DisplayName();
+        	return "Test 123 :)";
         }
 
     }
