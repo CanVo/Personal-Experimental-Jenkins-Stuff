@@ -21,11 +21,13 @@ import org.kohsuke.stapler.DataBoundSetter;
 public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 
     private final String name;
+    private final String secretcode;
     private boolean useFrench;
 
     @DataBoundConstructor
-    public HelloWorldBuilder(String name) {
+    public HelloWorldBuilder(String name, String secretcode) {
         this.name = name;
+        this.secretcode = secretcode;
     }
 
     public String getName() {
@@ -49,6 +51,13 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
             listener.getLogger().println("Hello, " + name + "!");
         }
     }
+    
+    
+    
+    
+    
+    
+    
 
     @Symbol("greet")
     @Extension
@@ -73,8 +82,7 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 
         @Override
         public String getDisplayName() {
-            //return Messages.HelloWorldBuilder_DescriptorImpl_DisplayName();
-        	return "Hello my friend!";
+            return Messages.HelloWorldBuilder_DescriptorImpl_DisplayName();
         }
 
     }
