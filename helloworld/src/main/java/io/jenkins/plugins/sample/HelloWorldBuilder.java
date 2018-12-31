@@ -29,7 +29,7 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
     private boolean useFrench;
 
     @DataBoundConstructor
-    public HelloWorldBuilder(String name, String secretcode) {
+    public HelloWorldBuilder(String name, String secretcode, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParamters, String smartCredentials, String networkCredentials, String networkAuthenicationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String cscanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) {
         this.name = name;
         this.secretcode = secretcode;
     }
