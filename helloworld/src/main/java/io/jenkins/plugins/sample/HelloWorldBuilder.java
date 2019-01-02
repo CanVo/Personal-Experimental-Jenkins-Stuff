@@ -12,6 +12,9 @@ import hudson.tasks.BuildStepDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 
+import hudson.tasks.CommandInterpreter;
+import org.apache.commons.lang.SystemUtils;
+
 import javax.servlet.ServletException;
 import java.io.IOException;
 import jenkins.tasks.SimpleBuildStep;
