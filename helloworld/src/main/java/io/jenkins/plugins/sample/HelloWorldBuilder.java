@@ -1,5 +1,8 @@
 package io.jenkins.plugins.sample;
 
+//Test
+import PowerShell.java
+
 import hudson.Launcher;
 import hudson.Extension;
 import hudson.FilePath;
@@ -11,9 +14,6 @@ import hudson.tasks.Builder;
 import hudson.tasks.BuildStepDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
-
-import hudson.tasks.CommandInterpreter;
-import org.apache.commons.lang.SystemUtils;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
