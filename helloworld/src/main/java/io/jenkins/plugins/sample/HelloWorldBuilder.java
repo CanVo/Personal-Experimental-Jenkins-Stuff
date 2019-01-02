@@ -58,8 +58,7 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
         this.reuseScan = reuseScan;
         this.scanId = scanId;
         this.mode = mode;
-        
-        PowerShell shellCommand = new PowerShell("Test");
+
     }
 
     public String getName() {
