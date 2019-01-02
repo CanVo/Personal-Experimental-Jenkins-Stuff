@@ -111,6 +111,7 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
         	if (settingsName.length() == 0)
                 return FormValidation.error(Messages.HelloWorldBuilder_DescriptorImpl_errors_missingName());
         	
+        	return FormValidation.ok();
         }
         
         
