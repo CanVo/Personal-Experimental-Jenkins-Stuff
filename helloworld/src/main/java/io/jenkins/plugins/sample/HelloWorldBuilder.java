@@ -117,6 +117,17 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
         
         
         
+        private class PowerShell extends CommandInterpreter {
+        	
+        	public PowerShell(String command) {
+                super(command);
+            }
+        	
+        }
+        
+        
+        
+        
         
         
         // isApplicable and getDisplayName is auto generated.
