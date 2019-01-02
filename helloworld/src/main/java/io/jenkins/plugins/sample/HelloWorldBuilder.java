@@ -25,7 +25,6 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
     
     private final String settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
     
-    
     private boolean useFrench;
 
     @DataBoundConstructor
@@ -107,12 +106,25 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
             }
             return FormValidation.ok();
         }
-
+        
+        public FormValidation doCheckSettingsName(@QueryParameter String settingsName) {
+        	if (value.length() == 0)
+                return FormValidation.error(Messages.HelloWorldBuilder_DescriptorImpl_errors_missingName());
+        	
+        }
+        
+        
+        
+        
+        
+        
+        // isApplicable and getDisplayName is auto generated.
         @Override
         public boolean isApplicable(Class<? extends AbstractProject> aClass) {
             return true;
         }
-
+        
+        // Build step name for plugin.
         @Override
         public String getDisplayName() {
             return Messages.HelloWorldBuilder_DescriptorImpl_DisplayName();
