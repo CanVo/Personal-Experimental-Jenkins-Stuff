@@ -109,7 +109,7 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
         
         public FormValidation doCheckSettingsName(@QueryParameter String settingsName) {
         	if (settingsName.length() == 0)
-                return FormValidation.error(Messages.HelloWorldBuilder_DescriptorImpl_errors_missingName());
+                return FormValidation.error(Messages.HelloWorldBuilder_DescriptorImpl_errors_missingSettingsFile());
         	
         	return FormValidation.ok();
         }
