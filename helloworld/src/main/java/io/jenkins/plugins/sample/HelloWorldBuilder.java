@@ -107,6 +107,8 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
             return FormValidation.ok();
         }
         
+        
+        // Test to see if the settings name field is empty
         public FormValidation doCheckSettingsName(@QueryParameter String settingsName) {
         	if (settingsName.length() == 0)
                 return FormValidation.error(Messages.HelloWorldBuilder_DescriptorImpl_errors_missingSettingsFile());
