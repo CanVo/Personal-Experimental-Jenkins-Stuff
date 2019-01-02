@@ -1,7 +1,7 @@
 package io.jenkins.plugins.sample;
 
 //Test
-import PowerShell.java
+import PowerShell.java;
 
 import hudson.Launcher;
 import hudson.Extension;
