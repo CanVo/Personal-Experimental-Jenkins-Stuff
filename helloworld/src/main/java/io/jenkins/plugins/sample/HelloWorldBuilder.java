@@ -21,7 +21,6 @@ import org.kohsuke.stapler.DataBoundSetter;
 public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 
     private final String name;
-    private final String secretcode;
     
     private final String settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
     

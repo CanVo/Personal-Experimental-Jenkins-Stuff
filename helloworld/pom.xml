@@ -9,7 +9,7 @@
     </parent>
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>helloworld</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>hpi</packaging>
     <properties>
         <!-- Baseline Jenkins version you use to build the plugin. Users must have this version or newer to run. -->
@@ -22,7 +22,7 @@
      -->
     </properties>
     <name>Can Experimental Scan Plugin</name>
-    <description>This is my. Also for personal reference, this description you’re reading right now is located in the pom.xml file.</description>
+    <description>This is my plugin to play around with and test stuff. For personal reference, this description you’re reading right now is located in the pom.xml file.</description>
     <!-- The default licence for Jenkins OSS Plugins is MIT. Substitute for the applicable one if needed. -->
     <licenses>
         <license>
