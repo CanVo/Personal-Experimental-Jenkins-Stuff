@@ -31,7 +31,7 @@ THE SOFTWARE.
 
  
  	<f:entry title="ipInstance" field="ipInstance">
-  		<f:textbox name=ipInstance value="${instance.ipInstance}" />
+  		<f:textbox name="ipInstance" value="${instance.ipInstance}" />
   	</f:entry>
   	
   	<f:entry title="scanPort" field="scanPort">
