@@ -140,4 +140,18 @@ THE SOFTWARE.
     <f:entry title="mode" field="mode">
     	<f:textbox />
     </f:entry>
+    
+    
+    <f:advanced>
+    
+        <!-- 
+        <f:entry title="${%French}" field="useFrench"
+                 description="${%FrenchDescr}">
+            <f:checkbox />
+        </f:entry> 
+        -->
+        
+    </f:advanced>
+    
+    
 </j:jelly>

@@ -95,7 +95,7 @@ public class PowerShell extends CommandInterpreter {
         }
 
         public String getDisplayName() {
-            return "Windows PowerShell";
+            return "Can Custom WI Plug-In";
         }
     }
 }
