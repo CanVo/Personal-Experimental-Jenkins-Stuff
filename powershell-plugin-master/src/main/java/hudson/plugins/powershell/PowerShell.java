@@ -46,7 +46,7 @@ public class PowerShell extends CommandInterpreter {
      * from Jenkin's core: command interpreter.
      */
     public static String intializeCommand(String ipInstance, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParameters, String smartCredentials, String networkCredentials, String networkAuthenticationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String scanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) {  	
-    	return "Write-Host" + ipInstance;
+    	return "Write-Host " + ipInstance;
     }
     
 
