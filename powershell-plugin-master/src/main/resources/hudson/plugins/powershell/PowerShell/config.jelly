@@ -39,7 +39,7 @@ THE SOFTWARE.
   	</f:entry>
   	
  
-  	<f:entry title="settingsName" field="settingsName">
+  	<f:entry title="${%settingsName}" field="settingsName">
   		<f:textbox />
   	</f:entry>
     
