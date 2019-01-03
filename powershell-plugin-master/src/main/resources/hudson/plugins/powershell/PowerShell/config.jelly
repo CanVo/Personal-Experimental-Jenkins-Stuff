@@ -31,7 +31,8 @@ THE SOFTWARE.
 
  
  	<f:entry title="ipInstance" field="ipInstance">
-  		<f:textbox />
+  		<!-- <f:textbox /> -->
+  		<f:textarea name="ipInstance" value="${instance.ipInstance}" class="fixed-width" />
   	</f:entry>
   	
   	<f:entry title="scanPort" field="scanPort">
