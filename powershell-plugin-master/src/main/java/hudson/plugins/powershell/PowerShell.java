@@ -35,7 +35,7 @@ public class PowerShell extends CommandInterpreter {
     	super(intializeCommand(settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode));
     	//super(command);
         
-        /*this.settingsName = settingsName;
+        this.settingsName = settingsName;
         this.scanName = scanName;
         this.startUrls = startUrls;
         this.crawlAuditMode = crawlAuditMode;
@@ -62,7 +62,7 @@ public class PowerShell extends CommandInterpreter {
         this.bytes = bytes;
         this.reuseScan = reuseScan;
         this.scanId = scanId;
-        this.mode = mode;*/
+        this.mode = mode;
     }
 
     protected String getFileExtension() {
