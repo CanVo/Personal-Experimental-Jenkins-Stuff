@@ -52,7 +52,7 @@ public class PowerShell extends CommandInterpreter {
         this.scanId = scanId;
         this.mode = mode;
         
-        String command = "Write-Host Hello!"
+        String command = "Write-Host Hello!";
         super(command);
     }
 
