@@ -86,6 +86,10 @@ public class PowerShell extends CommandInterpreter {
     	// Remember to check and sanitize.
     	// Assert scan port is a number and a valid port.
     	
+    	
+    	// Default Scan:
+    	// Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body '{ "settingsName": "Default" }'
+    	
     	// return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' ";
     	return "Invoke-RestMethod -Uri  http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans";
     }
