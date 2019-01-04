@@ -59,6 +59,8 @@ THE SOFTWARE.
     	<f:entry title="sharedThreads" field="sharedThreads">
     		<f:textbox />
     	</f:entry>
+    	
+    <f:optionalBlock name="dynamic" title="Include advanced parameters">
     
     	<f:entry title="crawlThreads" field="crawlThreads">
     		<f:textbox />
@@ -151,6 +153,8 @@ THE SOFTWARE.
     	<f:entry title="mode" field="mode">
     		<f:textbox />
     	</f:entry>
+    	
+    </f:optionalBlock>
     
     
     <f:advanced>
