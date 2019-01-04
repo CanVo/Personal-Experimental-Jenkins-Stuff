@@ -62,6 +62,11 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
     public String getName() {
         return name;
     }
+    
+    // TEST!!!!
+    public String getScanName() {
+    	return scanName;
+    }
 
     public boolean isUseFrench() {
         return useFrench;
