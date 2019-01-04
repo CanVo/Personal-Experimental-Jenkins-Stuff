@@ -138,6 +138,14 @@ public class PowerShell extends CommandInterpreter {
         public String getDisplayName() {
             return "W.I. Create Scan";
         }
+        
+        // Test to see if the settings name field is empty
+        public FormValidation doCheckSettingsName(@QueryParameter String ipInstance) {
+        	if (ipInstance.length() == 0)
+                return FormValidation.error("Please input an ip address or host name of the W.I. instance");
+        	
+        	return FormValidation.ok();
+        }
     }
     
     
