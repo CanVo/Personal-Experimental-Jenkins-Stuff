@@ -137,4 +137,49 @@ public class PowerShell extends CommandInterpreter {
             return "Can Custom WI Plug-In";
         }
     }
+    
+    //************************************** GETTERS AND SETTERS *******************************//
+    
+    public String getIPInstance() {
+    	return ipInstance;
+    }
+    
+    public String getScanPort() {
+    	return scanPort;
+    }
+    
+    
+    
+    /*
+    	 this.settingsName = settingsName;
+         this.scanName = scanName;
+         this.startUrls = startUrls;
+         this.crawlAuditMode = crawlAuditMode;
+         this.sharedThreads = sharedThreads;
+         this.crawlThreads = crawlThreads;
+         this.auditThreads = auditThreads;
+         this.startOption = startOption;
+         this.loginMacro = loginMacro;
+         this.workFlowMacros = workFlowMacros;
+         this.tcMarcoParameters = tcMarcoParameters;
+         this.smartCredentials = smartCredentials;
+         this.networkCredentials = networkCredentials;
+         this.networkAuthenticationMode = networkAuthenticationMode;
+         this.allowedHosts = allowedHosts;
+         this.policyID = policyID;
+         this.checkIDs = checkIDs;
+         this.dontStartScan = dontStartScan;
+         this.scanScope = scanScope;
+         this.scopedPaths = scopedPaths;
+         this.clientCertification = clientCertification;
+         this.storeName = storeName;
+         this.isGlobal = isGlobal;
+         this.serialNumber = serialNumber;
+         this.bytes = bytes;
+         this.reuseScan = reuseScan;
+         this.scanId = scanId;
+         this.mode = mode;*/
+    
+    
+    
 }
