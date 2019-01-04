@@ -31,7 +31,6 @@ THE SOFTWARE.
   </f:entry>
 -->
 
-	<f:optionalBlock title="createScan" field="Create a scan">
 	
  		<f:entry title="ipInstance" field="ipInstance">
   			<f:textbox />
@@ -152,10 +151,6 @@ THE SOFTWARE.
     	<f:entry title="mode" field="mode">
     		<f:textbox />
     	</f:entry>
-    
-   	</f:optionalBlock>
-    
-    
     
     
     <f:advanced>

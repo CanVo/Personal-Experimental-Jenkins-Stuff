@@ -35,6 +35,8 @@ public class PowerShell extends CommandInterpreter {
     @DataBoundConstructor
     public PowerShell(String ipInstance, int scanPort, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParameters, String smartCredentials, String networkCredentials, String networkAuthenticationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String scanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) { 
     	super(intializeCommand(ipInstance, scanPort, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode));
+    	
+    	// To save on code space, I can probably do this by making a loop via array or something.
     	this.ipInstance = ipInstance;
     	this.scanPort = scanPort;
     	this.settingsName = settingsName;
@@ -83,6 +85,7 @@ public class PowerShell extends CommandInterpreter {
     	// Remember to check and sanitize.
     	// Assert scan port is a number and a valid port.
     	
+    	// *** Do if check on what operation we're trying to do at the minute.
     	
     	// Default Scan:
     	// Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body '{ "settingsName": "Default" }'
@@ -133,7 +136,7 @@ public class PowerShell extends CommandInterpreter {
         }
 
         public String getDisplayName() {
-            return "Can Custom WI Plug-In";
+            return "W.I. Create Scan";
         }
     }
     
@@ -263,8 +266,5 @@ public class PowerShell extends CommandInterpreter {
     }
     
  //*****************************************************************************************//
-
-    
-    
     
 }
