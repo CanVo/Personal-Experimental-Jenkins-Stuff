@@ -156,7 +156,7 @@ public class PowerShell extends CommandInterpreter {
     	return scanName;
     }
     
-    public String getStartURLs() {
+    public String getStartUrls() {
     	return startUrls;
     }
     
