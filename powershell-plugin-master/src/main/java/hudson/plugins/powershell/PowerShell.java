@@ -187,7 +187,7 @@ public class PowerShell extends CommandInterpreter {
     }
     
     public String getWorkFlowMacros() {
-    	return workFlowMacros();
+    	return workFlowMacros;
     }
     
     public String getTcMacroParameters() {
@@ -198,6 +198,14 @@ public class PowerShell extends CommandInterpreter {
     	return smartCredentials;
     }
     
+    public String getNetworkCredentials() {
+    	return networkCredentials;
+    }
+    
+    public String getNetworkAuthenticationMode() {
+    	return networkAuthenticationMode;
+    }
+    
     
     
  //*****************************************************************************************//
@@ -206,8 +214,6 @@ public class PowerShell extends CommandInterpreter {
     
     
     /*
-         this.networkCredentials = networkCredentials;
-         this.networkAuthenticationMode = networkAuthenticationMode;
          this.allowedHosts = allowedHosts;
          this.policyID = policyID;
          this.checkIDs = checkIDs;
