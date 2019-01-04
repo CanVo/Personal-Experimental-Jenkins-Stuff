@@ -123,17 +123,6 @@ public class PowerShell extends CommandInterpreter {
     }
     
     
-//************************************** GETTERS AND SETTERS *******************************//
-    
-    public String getipInstance() {
-    	return ipInstance;
-    }
-    
-    public int getScanPort() {
-    	return scanPort;
-    }
-    
- //*****************************************************************************************//
 
     @Extension
     public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
@@ -150,6 +139,19 @@ public class PowerShell extends CommandInterpreter {
             return "Can Custom WI Plug-In";
         }
     }
+    
+    
+//************************************** GETTERS AND SETTERS *******************************//
+    
+    public String getipInstance() {
+    	return ipInstance;
+    }
+    
+    public int getScanPort() {
+    	return scanPort;
+    }
+    
+ //*****************************************************************************************//
     
     
     
