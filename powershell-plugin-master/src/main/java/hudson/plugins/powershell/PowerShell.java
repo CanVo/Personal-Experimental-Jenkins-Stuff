@@ -263,16 +263,7 @@ public class PowerShell extends CommandInterpreter {
     }
     
  //*****************************************************************************************//
-    
-    
-    
-    
-    /*
 
-         this.bytes = bytes;
-         this.reuseScan = reuseScan;
-         this.scanId = scanId;
-         this.mode = mode;*/
     
     
     
