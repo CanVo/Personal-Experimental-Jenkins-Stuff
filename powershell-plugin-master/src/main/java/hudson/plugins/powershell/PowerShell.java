@@ -151,15 +151,27 @@ public class PowerShell extends CommandInterpreter {
     	return scanPort;
     }
     
+    public String getSettingsName() {
+    	return settingsName;
+    }
+    
+    public String getScanName() {
+    	return scanName;
+    }
+    
+    public String getStartURLs() {
+    	return startUrls;
+    }
+    
+    
+    
+    
  //*****************************************************************************************//
     
     
     
     
     /*
-    	 this.settingsName = settingsName;
-         this.scanName = scanName;
-         this.startUrls = startUrls;
          this.crawlAuditMode = crawlAuditMode;
          this.sharedThreads = sharedThreads;
          this.crawlThreads = crawlThreads;

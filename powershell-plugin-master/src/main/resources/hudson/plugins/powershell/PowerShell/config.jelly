@@ -37,7 +37,6 @@ THE SOFTWARE.
   	<f:entry title="scanPort" field="scanPort">
   		<f:textbox />
   	</f:entry>
-  	
  
   	<f:entry title="${%settingsName}" field="settingsName">
   		<f:textbox />
