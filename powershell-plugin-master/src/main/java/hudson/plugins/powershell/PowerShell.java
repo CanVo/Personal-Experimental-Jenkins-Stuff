@@ -35,39 +35,36 @@ public class PowerShell extends CommandInterpreter {
     @DataBoundConstructor
     public PowerShell(String ipInstance, int scanPort, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParameters, String smartCredentials, String networkCredentials, String networkAuthenticationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String scanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) { 
     	super(intializeCommand(ipInstance, scanPort, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode));
-    
-    	
     	this.ipInstance = ipInstance;
     	this.scanPort = scanPort;
-    	 this.settingsName = settingsName;
-         this.scanName = scanName;
-         this.startUrls = startUrls;
-         this.crawlAuditMode = crawlAuditMode;
-         this.sharedThreads = sharedThreads;
-         this.crawlThreads = crawlThreads;
-         this.auditThreads = auditThreads;
-         this.startOption = startOption;
-         this.loginMacro = loginMacro;
-         this.workFlowMacros = workFlowMacros;
-         this.tcMarcoParameters = tcMarcoParameters;
-         this.smartCredentials = smartCredentials;
-         this.networkCredentials = networkCredentials;
-         this.networkAuthenticationMode = networkAuthenticationMode;
-         this.allowedHosts = allowedHosts;
-         this.policyID = policyID;
-         this.checkIDs = checkIDs;
-         this.dontStartScan = dontStartScan;
-         this.scanScope = scanScope;
-         this.scopedPaths = scopedPaths;
-         this.clientCertification = clientCertification;
-         this.storeName = storeName;
-         this.isGlobal = isGlobal;
-         this.serialNumber = serialNumber;
-         this.bytes = bytes;
-         this.reuseScan = reuseScan;
-         this.scanId = scanId;
-         this.mode = mode;
-    
+    	this.settingsName = settingsName;
+    	this.scanName = scanName;
+    	this.startUrls = startUrls;
+    	this.crawlAuditMode = crawlAuditMode;
+    	this.sharedThreads = sharedThreads;
+    	this.crawlThreads = crawlThreads;
+    	this.auditThreads = auditThreads;
+    	this.startOption = startOption;
+    	this.loginMacro = loginMacro;
+    	this.workFlowMacros = workFlowMacros;
+    	this.tcMarcoParameters = tcMarcoParameters;
+    	this.smartCredentials = smartCredentials;
+    	this.networkCredentials = networkCredentials;
+    	this.networkAuthenticationMode = networkAuthenticationMode;
+    	this.allowedHosts = allowedHosts;
+    	this.policyID = policyID;
+    	this.checkIDs = checkIDs;
+    	this.dontStartScan = dontStartScan;
+    	this.scanScope = scanScope;
+    	this.scopedPaths = scopedPaths;
+    	this.clientCertification = clientCertification;
+    	this.storeName = storeName;
+    	this.isGlobal = isGlobal;
+    	this.serialNumber = serialNumber;
+    	this.bytes = bytes;
+    	this.reuseScan = reuseScan;
+    	this.scanId = scanId;
+    	this.mode = mode;
     }
 
     protected String getFileExtension() {
@@ -91,7 +88,7 @@ public class PowerShell extends CommandInterpreter {
     	// Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body '{ "settingsName": "Default" }'
     	
     	// return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' ";
-    	return "Invoke-RestMethod -Uri  http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans";
+    	return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans";
     }
     
 
@@ -163,6 +160,21 @@ public class PowerShell extends CommandInterpreter {
     	return startUrls;
     }
     
+    public String getCrawlAuditMode() {
+    	return crawlAuditMode;
+    }
+    
+    public String getSharedThreads() {
+    	return sharedThreads;
+    }
+    
+    public String getCrawlThreads() {
+    	return crawlThreads;
+    }
+    
+    public String getAuditThreads() {
+    	return auditThreads;
+    }
     
     
     
@@ -172,10 +184,6 @@ public class PowerShell extends CommandInterpreter {
     
     
     /*
-         this.crawlAuditMode = crawlAuditMode;
-         this.sharedThreads = sharedThreads;
-         this.crawlThreads = crawlThreads;
-         this.auditThreads = auditThreads;
          this.startOption = startOption;
          this.loginMacro = loginMacro;
          this.workFlowMacros = workFlowMacros;
