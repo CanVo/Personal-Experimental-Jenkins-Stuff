@@ -138,8 +138,8 @@ public class PowerShell extends CommandInterpreter {
     }
     
     
-// Jenkins saves text field input for jobs through getters.
-// IE: If you were put in text in a input box, save the job, and come back then the text will still be there.
+// Jenkins saves jelly text field input from jobs through getters.
+// IE: If you were put in text to an input box, save the job, and come back then the text will still be there.
 //************************************** GETTERS  *******************************//
     
     public String getipInstance() {
@@ -206,7 +206,17 @@ public class PowerShell extends CommandInterpreter {
     	return networkAuthenticationMode;
     }
     
+    public String getAllowedHosts() {
+    	return allowedHosts;
+    }
     
+    public String getPolicyID() {
+    	return policyID;
+    }
+    
+    public String getCheckIDs() {
+    	return checkIDs;
+    }
     
  //*****************************************************************************************//
     
@@ -214,9 +224,6 @@ public class PowerShell extends CommandInterpreter {
     
     
     /*
-         this.allowedHosts = allowedHosts;
-         this.policyID = policyID;
-         this.checkIDs = checkIDs;
          this.dontStartScan = dontStartScan;
          this.scanScope = scanScope;
          this.scopedPaths = scopedPaths;
