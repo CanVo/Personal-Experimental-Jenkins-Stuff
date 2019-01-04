@@ -138,7 +138,9 @@ public class PowerShell extends CommandInterpreter {
     }
     
     
-//************************************** GETTERS AND SETTERS *******************************//
+// Jenkins saves text field input for jobs through getters.
+// IE: If you were put in text in a input box, save the job, and come back then the text will still be there.
+//************************************** GETTERS  *******************************//
     
     public String getipInstance() {
     	return ipInstance;
@@ -176,6 +178,26 @@ public class PowerShell extends CommandInterpreter {
     	return auditThreads;
     }
     
+    public String getStartOption() {
+    	return startOption;
+    }
+    
+    public String getLoginMacro() {
+    	return loginMacro;
+    }
+    
+    public String getWorkFlowMacros() {
+    	return workFlowMacros();
+    }
+    
+    public String getTcMacroParameters() {
+    	return tcMarcoParameters;
+    }
+    
+    public String getSmartCredentials() {
+    	return smartCredentials;
+    }
+    
     
     
  //*****************************************************************************************//
@@ -184,11 +206,6 @@ public class PowerShell extends CommandInterpreter {
     
     
     /*
-         this.startOption = startOption;
-         this.loginMacro = loginMacro;
-         this.workFlowMacros = workFlowMacros;
-         this.tcMarcoParameters = tcMarcoParameters;
-         this.smartCredentials = smartCredentials;
          this.networkCredentials = networkCredentials;
          this.networkAuthenticationMode = networkAuthenticationMode;
          this.allowedHosts = allowedHosts;
