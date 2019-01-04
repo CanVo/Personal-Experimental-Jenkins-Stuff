@@ -30,11 +30,11 @@ THE SOFTWARE.
   </f:entry>
 
 
-	<f:advanced title="createScan" field="Create a scan">
+	<f:optionalBlock title="createScan" field="Create a scan">
  		<f:entry title="ipInstance" field="ipInstance">
   			<f:textbox />
   		</f:entry>	
-  	</f:advanced>
+  	</f:optionalBlock>
   	
   	<f:entry title="scanPort" field="scanPort">
   		<f:textbox />
