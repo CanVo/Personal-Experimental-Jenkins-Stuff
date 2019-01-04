@@ -29,10 +29,12 @@ THE SOFTWARE.
     <f:textarea name="command" value="${instance.command}" class="fixed-width" />
   </f:entry>
 
- 
- 	<f:entry title="ipInstance" field="ipInstance">
-  		<f:textbox />
-  	</f:entry>
+
+	<f:checkbox title="createScan" field="Create a scan">
+ 		<f:entry title="ipInstance" field="ipInstance">
+  			<f:textbox />
+  		</f:entry>	
+  	</f:checkbox>
   	
   	<f:entry title="scanPort" field="scanPort">
   		<f:textbox />
