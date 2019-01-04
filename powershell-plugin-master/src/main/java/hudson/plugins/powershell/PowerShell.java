@@ -125,7 +125,7 @@ public class PowerShell extends CommandInterpreter {
     
 //************************************** GETTERS AND SETTERS *******************************//
     
-    public String getIPInstance() {
+    public String getipInstance() {
     	return ipInstance;
     }
     
