@@ -254,7 +254,7 @@ public class PowerShell extends CommandInterpreter {
     	return reuseScan;
     }
     
-    public String scanID() {
+    public String scanId() {
     	return scanId;
     }
     
