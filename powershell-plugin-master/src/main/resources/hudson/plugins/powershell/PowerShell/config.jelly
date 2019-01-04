@@ -25,133 +25,133 @@ THE SOFTWARE.
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
   
 
+<!--
   <f:entry title="${%Command}" description="${%description(rootURL)}">
     <f:textarea name="command" value="${instance.command}" class="fixed-width" />
   </f:entry>
-
+-->
 
 	<f:optionalBlock title="createScan" field="Create a scan">
 	
  		<f:entry title="ipInstance" field="ipInstance">
   			<f:textbox />
   		</f:entry>	
-  
   	
-  	<f:entry title="scanPort" field="scanPort">
-  		<f:textbox />
-  	</f:entry>
+  		<f:entry title="scanPort" field="scanPort">
+  			<f:textbox />
+  		</f:entry>
  
-  	<f:entry title="${%settingsName}" field="settingsName">
-  		<f:textbox />
-  	</f:entry>
+  		<f:entry title="${%settingsName}" field="settingsName">
+  			<f:textbox />
+  		</f:entry>
     
-	<f:entry title="scanName" field="scanName">
-    	<f:textbox />
-    </f:entry>
+		<f:entry title="scanName" field="scanName">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="startUrls" field="startUrls">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="startUrls" field="startUrls">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="crawlAuditMode" field="crawlAuditMode">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="crawlAuditMode" field="crawlAuditMode">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="sharedThreads" field="sharedThreads">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="sharedThreads" field="sharedThreads">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="crawlThreads" field="crawlThreads">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="crawlThreads" field="crawlThreads">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="auditThreads" field="auditThreads">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="auditThreads" field="auditThreads">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="startOption" field="startOption">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="startOption" field="startOption">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="loginMacro" field="loginMacro">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="loginMacro" field="loginMacro">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="workFlowMacros" field="workFlowMacros">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="workFlowMacros" field="workFlowMacros">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="tcMarcoParameters" field="tcMarcoParameters">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="tcMarcoParameters" field="tcMarcoParameters">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="smartCredentials" field="smartCredentials">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="smartCredentials" field="smartCredentials">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="networkCredentials" field="networkCredentials">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="networkCredentials" field="networkCredentials">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="networkAuthenticationMode" field="networkAuthenticationMode">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="networkAuthenticationMode" field="networkAuthenticationMode">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="allowedHosts" field="allowedHosts">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="allowedHosts" field="allowedHosts">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="policyID" field="policyID">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="policyID" field="policyID">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="checkIDs" field="checkIDs">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="checkIDs" field="checkIDs">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="dontStartScan" field="dontStartScan">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="dontStartScan" field="dontStartScan">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="scanScope" field="scanScope">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="scanScope" field="scanScope">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="scopedPaths" field="scopedPaths">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="scopedPaths" field="scopedPaths">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="clientCertification" field="clientCertification">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="clientCertification" field="clientCertification">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="storeName" field="storeName">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="storeName" field="storeName">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="isGlobal" field="isGlobal">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="isGlobal" field="isGlobal">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="serialNumber" field="serialNumber">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="serialNumber" field="serialNumber">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="bytes" field="bytes">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="bytes" field="bytes">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="reuseScan" field="reuseScan">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="reuseScan" field="reuseScan">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="scanId" field="scanId">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="scanId" field="scanId">
+    		<f:textbox />
+    	</f:entry>
     
-    <f:entry title="mode" field="mode">
-    	<f:textbox />
-    </f:entry>
+    	<f:entry title="mode" field="mode">
+    		<f:textbox />
+    	</f:entry>
     
    	</f:optionalBlock>
     
