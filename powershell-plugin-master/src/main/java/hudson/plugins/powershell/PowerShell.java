@@ -190,7 +190,7 @@ public class PowerShell extends CommandInterpreter {
     	return workFlowMacros;
     }
     
-    public String getTcMacroParameters() {
+    public String gettcMarcoParameters() {
     	return tcMarcoParameters;
     }
     
@@ -218,19 +218,57 @@ public class PowerShell extends CommandInterpreter {
     	return checkIDs;
     }
     
+    public String getDontStartScan() {
+    	return dontStartScan;
+    }
+    
+    public String getScanScope() {
+    	return scanScope;
+    }
+    
+    public String getScopedPaths() {
+    	return scopedPaths;
+    }
+    
+    public String getClientCertification() {
+    	return clientCertification;
+    }
+    
+    public String getStoreName() {
+    	return storeName;
+    }
+    
+    public String getIsGlobal() {
+    	return isGlobal;
+    }
+    
+    public String getSerialNumber() {
+    	return serialNumber;
+    }
+    
+    public String getBytes() {
+    	return bytes;
+    }
+    
+    public String getReuseScan() {
+    	return reuseScan;
+    }
+    
+    public String scanID() {
+    	return scanId;
+    }
+    
+    public String getMode() {
+    	return mode;
+    }
+    
  //*****************************************************************************************//
     
     
     
     
     /*
-         this.dontStartScan = dontStartScan;
-         this.scanScope = scanScope;
-         this.scopedPaths = scopedPaths;
-         this.clientCertification = clientCertification;
-         this.storeName = storeName;
-         this.isGlobal = isGlobal;
-         this.serialNumber = serialNumber;
+
          this.bytes = bytes;
          this.reuseScan = reuseScan;
          this.scanId = scanId;
