@@ -121,6 +121,19 @@ public class PowerShell extends CommandInterpreter {
         String path = script.getRemote();
         return path.length() > 3 && path.charAt(1) == ':' && path.charAt(2) == '\\';
     }
+    
+    
+//************************************** GETTERS AND SETTERS *******************************//
+    
+    public String getIPInstance() {
+    	return ipInstance;
+    }
+    
+    public String getScanPort() {
+    	return scanPort;
+    }
+    
+ //*****************************************************************************************//
 
     @Extension
     public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
@@ -138,15 +151,6 @@ public class PowerShell extends CommandInterpreter {
         }
     }
     
-    //************************************** GETTERS AND SETTERS *******************************//
-    
-    public String getIPInstance() {
-    	return ipInstance;
-    }
-    
-    public String getScanPort() {
-    	return scanPort;
-    }
     
     
     
