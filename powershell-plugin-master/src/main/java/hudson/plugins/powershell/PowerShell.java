@@ -129,7 +129,7 @@ public class PowerShell extends CommandInterpreter {
     	return ipInstance;
     }
     
-    public String getScanPort() {
+    public int getScanPort() {
     	return scanPort;
     }
     
