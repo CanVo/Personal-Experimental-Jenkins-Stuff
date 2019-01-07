@@ -32,7 +32,7 @@ public class PowerShell extends CommandInterpreter {
 	
 	private int scanPort;
 	private final String ipInstance, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
-	public static String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
+	private String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
 	
 	
     @DataBoundConstructor
@@ -155,7 +155,9 @@ public class PowerShell extends CommandInterpreter {
     	//String memes =  "\'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{\"scanName\":\"" + scanName + "\"}}\'";
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
     	
-    	return overrideVars[0];
+    	
+    	
+    	return "nah";
     	
     	
     	// Idea: Have numerous functions to build my invoke string??
@@ -165,7 +167,14 @@ public class PowerShell extends CommandInterpreter {
     	
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans";
     	
+    }
+    
+    public boolean overrideStringCheck(String [] overrideArray) {
+    	for (int i = 0; i < overrideArray.length(); i++) {
+    		System.out.println("Your line " + overrideArray[i]);
+    	}
     	
+    	return true;
     }
     
     
