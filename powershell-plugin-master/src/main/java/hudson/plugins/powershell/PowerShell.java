@@ -152,6 +152,11 @@ public class PowerShell extends CommandInterpreter {
     	return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
     	
     	
+    	// Idea: Have numerous functions to build my invoke string??
+    	
+    	// IE: If null, return nothing for string concatenation.
+    	// Else , build string!
+    	
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans";
     	
     	
