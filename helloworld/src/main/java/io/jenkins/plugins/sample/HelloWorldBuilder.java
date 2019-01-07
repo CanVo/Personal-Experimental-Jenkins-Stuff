@@ -108,7 +108,7 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
             }
             return FormValidation.ok();
         }
-        
+         
         
         // Test to see if the settings name field is empty
         public FormValidation doCheckSettingsName(@QueryParameter String settingsName) {
