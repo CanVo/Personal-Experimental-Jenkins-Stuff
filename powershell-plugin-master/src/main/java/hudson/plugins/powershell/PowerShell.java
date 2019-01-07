@@ -33,7 +33,6 @@ public class PowerShell extends CommandInterpreter {
 	
 	private int scanPort;
 	private final String ipInstance, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
-	private String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
 	
 	
     @DataBoundConstructor
@@ -170,8 +169,10 @@ public class PowerShell extends CommandInterpreter {
     	
     }
     
-    public boolean overrideStringCheck(String [] overrideArray) {
-    	for (int i = 0; i < overrideArray.length; i++) {
+    public boolean overrideStringCheck() {
+    	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
+    	
+    	for (int i = 0; i < overrideVars.length; i++) {
     		System.out.println("Your line " + overrideArray[i]);
     	}
     	
