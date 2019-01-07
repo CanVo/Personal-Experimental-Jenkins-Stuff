@@ -157,8 +157,7 @@ public class PowerShell extends CommandInterpreter {
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
     	
     	
-    	overrideStringCheck();
-    	return "nah";
+    	return overrideStringCheck();
     	
     	
     	// Idea: Have numerous functions to build my invoke string??
@@ -170,15 +169,16 @@ public class PowerShell extends CommandInterpreter {
     	
     }
     
-    public static boolean overrideStringCheck() {
+    public static String overrideStringCheck() {
     	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
     	
+    	String test;
     	int i;
     	for (i = 0; i < overrideVars.length; i++) {
-    		System.out.println(i);
+    		test += i;
     	}
     	
-    	return true;
+    	return test;
     }
     
     
