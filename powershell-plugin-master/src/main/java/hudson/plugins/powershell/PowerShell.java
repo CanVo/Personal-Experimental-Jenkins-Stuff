@@ -218,10 +218,27 @@ public class PowerShell extends CommandInterpreter {
          * 			Test to see if the settings name field is empty and if the user has entered bad chars.
          * 			This is important so we can avoid command injection if the user were to utilize chars like ";" or encoded characters.
          */
-        public FormValidation doCheckSettingsName(@QueryParameter String ipInstance) {
+        public FormValidation doCheckIpInstance(@QueryParameter String ipInstance) {
         	if (ipInstance.length() == 0)
                 return FormValidation.error("Please input an ip address or host name of the W.I. instance");
         	if (!(ipInstance.matches("^[a-zA-Z0-9./:,-]*$")))
+        		return FormValidation.error("Input not valid! Provided input may have prohibted characters!");
+        	
+        	return FormValidation.ok();
+        }
+        
+        
+        
+        /* Function: doCheckSettingsName
+         * 
+         * Purpose: Checks user input for the name of the settings file.
+         * 			Test to see if the settings name field is empty and if the user has entered bad chars.
+         * 			This is important so we can avoid command injection if the user were to utilize chars like ";" or encoded characters.
+         */
+        public FormValidation doCheckSettingsName(@QueryParameter String settingsName) {
+        	if (settingsName.length() == 0)
+                return FormValidation.error("Please input an ip address or host name of the W.I. instance");
+        	if (!(settingsName.matches("^[a-zA-Z0-9./:,-]*$")))
         		return FormValidation.error("Input not valid! Provided input may have prohibted characters!");
         	
         	return FormValidation.ok();
