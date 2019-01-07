@@ -32,7 +32,7 @@ THE SOFTWARE.
 -->
 
 	
- 		<f:entry title="ipInstance" field="ipInstance">
+ 		<f:entry title="${ipInstance}" field="ipInstance">
   			<f:textbox />
   		</f:entry>	
   	
