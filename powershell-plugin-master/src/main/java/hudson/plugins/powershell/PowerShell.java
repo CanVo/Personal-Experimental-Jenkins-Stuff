@@ -30,9 +30,9 @@ Invoke-RestMethod -Uri http://EC2AMAZ-468247R:8083/webinspect/scanner/scans -Met
  */
 public class PowerShell extends CommandInterpreter {
 	
-	private final String settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
-	private final String ipInstance;
 	private int scanPort;
+	private final String ipInstance, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
+	private String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
 	
 	
     @DataBoundConstructor
@@ -43,6 +43,8 @@ public class PowerShell extends CommandInterpreter {
     	this.ipInstance = ipInstance;
     	this.scanPort = scanPort;
     	this.settingsName = settingsName;
+    	
+    	//********** REQUIRES OVERRIDE STRING ***********//
     	this.scanName = scanName;
     	this.startUrls = startUrls;
     	this.crawlAuditMode = crawlAuditMode;
@@ -67,6 +69,8 @@ public class PowerShell extends CommandInterpreter {
     	this.isGlobal = isGlobal;
     	this.serialNumber = serialNumber;
     	this.bytes = bytes;
+    	//***********************************************//
+    	
     	this.reuseScan = reuseScan;
     	this.scanId = scanId;
     	this.mode = mode;
@@ -148,12 +152,14 @@ public class PowerShell extends CommandInterpreter {
     	
     	// Default Scan:
     	// Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body '{ "settingsName": "Default" }'
-    	String memes =  "\'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{\"scanName\":\"" + scanName + "\"}}\'";
-    	return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
+    	//String memes =  "\'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{\"scanName\":\"" + scanName + "\"}}\'";
+    	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
+    	
+    	Return overrideVars[1];
     	
     	
     	// Idea: Have numerous functions to build my invoke string??
-    	
+    	// TODO: 
     	// IE: If null, return nothing for string concatenation.
     	// Else , build string!
     	
