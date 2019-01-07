@@ -172,7 +172,7 @@ public class PowerShell extends CommandInterpreter {
     public static String overrideStringCheck() {
     	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
     	
-    	String test;
+    	String test = "";
     	int i;
     	for (i = 0; i < overrideVars.length; i++) {
     		test += i;
