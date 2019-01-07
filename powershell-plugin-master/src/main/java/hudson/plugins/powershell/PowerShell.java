@@ -145,7 +145,7 @@ public class PowerShell extends CommandInterpreter {
         public FormValidation doCheckSettingsName(@QueryParameter String ipInstance) {
         	if (ipInstance.length() == 0)
                 return FormValidation.error("Please input an ip address or host name of the W.I. instance");
-        	if (ipInstance.match("^[a-zA-Z0-9./]*$"))
+        	if (!(ipInstance.match("^[a-zA-Z0-9./]*$")))
         		return FormValidation.error("Input not valid! Provided input may have prohibted characters!");
         	
         	return FormValidation.ok();
