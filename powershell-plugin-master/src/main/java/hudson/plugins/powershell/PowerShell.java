@@ -147,7 +147,7 @@ public class PowerShell extends CommandInterpreter {
         	String regex = ^[a-zA-Z0-9.\/]*$;
         	
         	if (!(ipInstance.matches(regex)))
-        		return FormValidation.error("Invalid input! Provided input maybe has prohibited characters!")
+        		return FormValidation.error("Invalid input! Provided input maybe has prohibited characters!");
         	
         	return FormValidation.ok();
         }
