@@ -12,6 +12,8 @@ import org.apache.commons.lang.SystemUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 
+import java.lang.*
+
 
 /**
 # "{\"settingsName\":\"Default\", \"overrides\":{\"scanName\":\"PLSWORK!\", \"startUrls\":[\"http://zero.webappsecurity.com/\"],\"scanScope\":\"self\", \"scopedPaths\":[\"/\",\"/login.html\"]}}"
@@ -172,7 +174,8 @@ public class PowerShell extends CommandInterpreter {
     public boolean overrideStringCheck() {
     	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
     	
-    	for (int i = 0; i < overrideVars.length; i++) {
+    	int i;
+    	for (i = 0; i < overrideVars.length; i++) {
     		System.out.println("Your line " + overrideArray[i]);
     	}
     	
