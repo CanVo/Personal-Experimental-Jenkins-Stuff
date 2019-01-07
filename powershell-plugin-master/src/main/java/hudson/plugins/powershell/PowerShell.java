@@ -146,13 +146,11 @@ public class PowerShell extends CommandInterpreter {
         	
         	return FormValidation.ok();
         }
-        
-       
     }
     
     
 // Jenkins saves jelly text field input from jobs through getters.
-// IE: If you were put in text to an input box, save the job, and come back then the text will still be there upon page return.
+// IE: If you were put in text to an input box, save the job, and come back then the text will still be there.
 //************************************** GETTERS  *******************************//
     
     public String getipInstance() {
