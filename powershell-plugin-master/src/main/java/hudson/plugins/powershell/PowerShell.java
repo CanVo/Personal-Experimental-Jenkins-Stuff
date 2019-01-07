@@ -149,7 +149,7 @@ public class PowerShell extends CommandInterpreter {
     	// Default Scan:
     	// Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body '{ "settingsName": "Default" }'
     	// String memes = "\"{\"settingsName\":\"" + settingsName + "\", \"overrides\":{\"scanName\":\"PLSWORK!\"}}\"";
-    	String memes = "@'{ \"settingsName\": " + settingsName + "} '@";
+    	String memes = "@'`n{ \"settingsName\": " + settingsName + "} `n'@";
     	return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
     	
     	
