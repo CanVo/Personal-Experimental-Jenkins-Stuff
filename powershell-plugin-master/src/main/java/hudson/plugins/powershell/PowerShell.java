@@ -1,6 +1,6 @@
 package hudson.plugins.powershell;
 
-import java.util.regex.Pattern
+import java.util.regex.Pattern;
 import hudson.Extension;
 import hudson.FilePath;
 import hudson.model.AbstractProject;
