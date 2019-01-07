@@ -144,7 +144,6 @@ public class PowerShell extends CommandInterpreter {
         	if (ipInstance.length() == 0)
                 return FormValidation.error("Please input an ip address or host name of the W.I. instance");
         	
-        	
         	return FormValidation.ok();
         }
         
