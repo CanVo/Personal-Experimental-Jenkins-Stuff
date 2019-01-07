@@ -181,7 +181,7 @@ public class PowerShell extends CommandInterpreter {
      * Returns true IF there are override parameters present.
      * Returns false IF there are no override parameters present.
      */
-    public static boolean overrideStringCheck() {
+    public static String overrideStringCheck() {
     	// I declare my array here now because at this point, my variables should be populated and ready to go after constructor sets params.
     	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
     	
