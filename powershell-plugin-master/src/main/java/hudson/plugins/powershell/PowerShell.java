@@ -6,6 +6,7 @@ import hudson.model.AbstractProject;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Builder;
 import hudson.tasks.CommandInterpreter;
+import hudson.util.FormValidation;
 import org.apache.commons.lang.SystemUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
 
