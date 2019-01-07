@@ -173,12 +173,13 @@ public class PowerShell extends CommandInterpreter {
     	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
     	
     	String test = "";
+    	int count = 0;
     	int i;
     	for (i = 0; i < overrideVars.length; i++) {
-    		test += i;
+    		count += i;
     	}
     	
-    	return test;
+    	return "Your count num is: " + count;
     }
     
     
@@ -212,7 +213,7 @@ public class PowerShell extends CommandInterpreter {
         
         
         
-        /* Function: doCheckSettingsName
+        /* Function: doCheckIpInstance
          * 
          * Purpose: Checks user input for the name of the settings file.
          * 			Test to see if the settings name field is empty and if the user has entered bad chars.
