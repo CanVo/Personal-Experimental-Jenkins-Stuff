@@ -175,7 +175,7 @@ public class PowerShell extends CommandInterpreter {
     	
     	int i;
     	for (i = 0; i < overrideVars.length; i++) {
-    		java.lang.System.out.println("Your line " + overrideArray[i]);
+    		System.out.println(i);
     	}
     	
     	return true;
