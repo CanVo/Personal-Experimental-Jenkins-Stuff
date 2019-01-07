@@ -34,7 +34,7 @@ public class PowerShell extends CommandInterpreter {
 	
 	private int scanPort;
 	private static String ipInstance, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
-	// Maybe has something to do with this.
+	
 	
 	
     @DataBoundConstructor
@@ -157,8 +157,10 @@ public class PowerShell extends CommandInterpreter {
     	//String memes =  "\'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{\"scanName\":\"" + scanName + "\"}}\'";
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
     	
+    	if (overrideStringCheck())
+    		return "WE DO NEED OUR OVERRIDE!!!";
     	
-    	return overrideStringCheck();
+    	return "WE DO NOT NEED ANY OVERRIDES!!!";
     	
     	
     	// Idea: Have numerous functions to build my invoke string??
@@ -181,23 +183,16 @@ public class PowerShell extends CommandInterpreter {
      * Returns true IF there are override parameters present.
      * Returns false IF there are no override parameters present.
      */
-    public static String overrideStringCheck() {
+    public static boolean overrideStringCheck() {
     	// I declare my array here now because at this point, my variables should be populated and ready to go after constructor sets params.
     	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
     	
-    	/*
     	for (int i = 0; i < overrideVars.length; i++) {
-    		if (!(overrideVars[i] == ""))
+    		if (!(overrideVars[i] == NULL))
     			return true;
-    	} */
-    	
-    	String string = "";
-    	
-    	for (int i = 0; i < overrideVars.length; i++) {
-    		string = string + " " + overrideVars[i];
     	}
 
-    	return string;
+    	return false;
     }
     
     
