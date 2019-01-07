@@ -71,17 +71,73 @@ public class PowerShell extends CommandInterpreter {
     	this.scanId = scanId;
     	this.mode = mode;
     }
+    
+    
 
+    /*
+     * Function: getFileExtension
+     * 
+     * Purpose: Inherited from powershell plugin.
+     */
     protected String getFileExtension() {
         return ".ps1";
     }
     
     
+    
+    /*
+     * Function: buildCommandLine
+     * 
+     * Purpose: Inherited from powershell plugin.
+     */
+    public String[] buildCommandLine(FilePath script) {
+        if (isRunningOnWindows(script)) {
+            return new String[] { "powershell.exe", "-NonInteractive", "-ExecutionPolicy", "Bypass", "& \'" + script.getRemote() + "\'"};
+        } else {
+            // ExecutionPolicy option does not work (and is not required) for non-Windows platforms
+            // See https://github.com/PowerShell/PowerShell/issues/2742
+            return new String[] { "pwsh", "-NonInteractive", "& \'" + script.getRemote() + "\'"};
+        }
+    }
+
+    
+    
+    /*
+     * Function: getContents
+     * 
+     * Purpose: Inherited from powershell plugin.
+     */
+    protected String getContents() {
+        return command + "\r\nexit $LastExitCode";
+    }
+
+    
+    
+    /*
+     * Function: isRunningOnWindows
+     * 
+     * Purpose: Inherited from powershell plugin.
+     */
+    private boolean isRunningOnWindows(FilePath script) {
+        // Ideally this would use a property of the build/run, but unfortunately CommandInterpreter only gives us the
+        // FilePath, so we need to guess based on that.
+        if (!script.isRemote()) {
+            // Running locally, so we can just check the local OS
+            return SystemUtils.IS_OS_WINDOWS;
+        }
+
+        // Running remotely, guess based on the path. A path starting with something like "C:\" is Windows.
+        String path = script.getRemote();
+        return path.length() > 3 && path.charAt(1) == ':' && path.charAt(2) == '\\';
+    }
+    
+    
+    
     /* Function: intializeCommand
      * 
      * Purpose: This function will extract all the input fields the user has given relating to a desired scan
-     * then build a string based on the information. After this, our string is sent to the super method
-     * from Jenkin's core: command interpreter.
+     * 			then build a string based on the information. After this, our string is sent to the super method
+     * 			from Jenkin's core: command interpreter.
      */
     public static String intializeCommand(String ipInstance, int scanPort, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParameters, String smartCredentials, String networkCredentials, String networkAuthenticationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String scanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) {  	
     	// Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body '{ "settingsName": "Default" }'
@@ -97,36 +153,12 @@ public class PowerShell extends CommandInterpreter {
     	return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans";
     }
     
-
-    public String[] buildCommandLine(FilePath script) {
-        if (isRunningOnWindows(script)) {
-            return new String[] { "powershell.exe", "-NonInteractive", "-ExecutionPolicy", "Bypass", "& \'" + script.getRemote() + "\'"};
-        } else {
-            // ExecutionPolicy option does not work (and is not required) for non-Windows platforms
-            // See https://github.com/PowerShell/PowerShell/issues/2742
-            return new String[] { "pwsh", "-NonInteractive", "& \'" + script.getRemote() + "\'"};
-        }
-    }
-
-    protected String getContents() {
-        return command + "\r\nexit $LastExitCode";
-    }
-
-    private boolean isRunningOnWindows(FilePath script) {
-        // Ideally this would use a property of the build/run, but unfortunately CommandInterpreter only gives us the
-        // FilePath, so we need to guess based on that.
-        if (!script.isRemote()) {
-            // Running locally, so we can just check the local OS
-            return SystemUtils.IS_OS_WINDOWS;
-        }
-
-        // Running remotely, guess based on the path. A path starting with something like "C:\" is Windows.
-        String path = script.getRemote();
-        return path.length() > 3 && path.charAt(1) == ':' && path.charAt(2) == '\\';
-    }
-    
     
 
+    
+    
+    
+    //********************************** DESCRIPTOR SEGMENT **********************************//
     @Extension
     public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
         @Override
@@ -134,22 +166,46 @@ public class PowerShell extends CommandInterpreter {
             return "/plugin/powershell/help.html";
         }
         
+        
         public boolean isApplicable(Class<? extends AbstractProject> jobType) {
             return true;
         }
-
+        
+        
+        
+        /* Function: getDisplayName
+         * 
+         * Purpose: Returns the display name of the plugin. 
+         * 			The name will be displayed to the user when choosing a build step in the drop down menu in Jenkins.
+         */
         public String getDisplayName() {
             return "W.I. Create Scan";
         }
         
-        // Test to see if the settings name field is empty
+        
+        
+        /* Function: doCheckSettingsName
+         * 
+         * Purpose: Checks user input for the name of the settings file.
+         * 			Test to see if the settings name field is empty and if the user has entered bad chars.
+         * 			This is important so we can avoid command injection if the user were to utilize chars like ";" or encoded characters.
+         */
         public FormValidation doCheckSettingsName(@QueryParameter String ipInstance) {
         	if (ipInstance.length() == 0)
                 return FormValidation.error("Please input an ip address or host name of the W.I. instance");
+        	if (!(ipInstance.matches("^[a-zA-Z0-9./:,-]*$")))
+        		return FormValidation.error("Input not valid! Provided input may have prohibted characters!");
         	
         	return FormValidation.ok();
         }
         
+        
+        
+        /* Function: doCheckStartUrls
+         * 
+         * Purpose: Check user input for their start urls. Tests to see if user has entered bad chars.
+         * 			This is important so we can avoid command injection if the user were to utilize chars like ";" or encoded characters.
+         */
         public FormValidation doCheckStartUrls(@QueryParameter String startUrls) {
         	// Check if the given String contains any prohibited chars that aren't alphanumeric chars + some special chars.
         	if (!(startUrls.matches("^[a-zA-Z0-9./:,-]*$")))
@@ -158,6 +214,7 @@ public class PowerShell extends CommandInterpreter {
         	return FormValidation.ok();
         }
     }
+    
     
     
 // Jenkins saves jelly text field input from jobs through getters.
