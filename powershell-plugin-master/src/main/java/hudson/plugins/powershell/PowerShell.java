@@ -172,14 +172,15 @@ public class PowerShell extends CommandInterpreter {
     public static String overrideStringCheck() {
     	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
     	
-    	String test = "";
     	int count = 0;
     	int i;
     	for (i = 0; i < overrideVars.length; i++) {
-    		count += i;
+    		count = i;
     	}
     	
-    	return "Your count num is: " + count;
+    	// count = 24
+    	
+    	return "Your count num is: " + count + " and your index at 2 is: " + overrideVars[2];
     }
     
     
