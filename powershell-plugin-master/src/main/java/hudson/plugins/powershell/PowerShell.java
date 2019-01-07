@@ -156,8 +156,10 @@ public class PowerShell extends CommandInterpreter {
     	//String memes =  "\'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{\"scanName\":\"" + scanName + "\"}}\'";
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
     	
+    	if (overrideStringCheck() == true)
+    		return "WE DO NEED OUR OVERRIDE!!!";
     	
-    	return overrideStringCheck();
+    	return "WE DO NOT NEED ANY OVERRIDES!!!";
     	
     	
     	// Idea: Have numerous functions to build my invoke string??
@@ -169,18 +171,25 @@ public class PowerShell extends CommandInterpreter {
     	
     }
     
-    public static String overrideStringCheck() {
+    
+    
+    /*
+     * Function overrideStringCheck
+     * 
+     * Purpose: Check our parameters that require the override string and see if there are any of them present.
+     * 			If there is, our API call will have to account for it.
+     */
+    public static boolean overrideStringCheck() {
+    	// I declare my array here now because at this point, my variables should be populated and ready to go after constructor sets params.
     	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
+    	boolean overrideFlag = false;
     	
-    	int count = 0;
-    	int i;
-    	for (i = 0; i < overrideVars.length; i++) {
-    		count = i;
+    	for (int i = 0; i < overrideVars.length; i++) {
+    		if (overrideVars[i] != "")
+    			return true;
     	}
-    	
-    	// count = 24
-    	
-    	return "Your count num is: " + count + " and your index at 2 is: " + overrideVars[2];
+
+    	return false;
     }
     
     
@@ -239,7 +248,7 @@ public class PowerShell extends CommandInterpreter {
          */
         public FormValidation doCheckSettingsName(@QueryParameter String settingsName) {
         	if (settingsName.length() == 0)
-                return FormValidation.error("Please input an ip address or host name of the W.I. instance");
+                return FormValidation.error("Please input the name of the settings file that will be used for the scan.");
         	if (!(settingsName.matches("^[a-zA-Z0-9./:,-]*$")))
         		return FormValidation.error("Input not valid! Provided input may have prohibted characters!");
         	
