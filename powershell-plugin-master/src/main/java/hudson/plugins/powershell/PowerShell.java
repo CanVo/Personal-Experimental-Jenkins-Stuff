@@ -178,11 +178,13 @@ public class PowerShell extends CommandInterpreter {
      * 
      * Purpose: Check our parameters that require the override string and see if there are any of them present.
      * 			If there is, our API call will have to account for it.
+     * 
+     * Returns true IF there are override parameters present.
+     * Returns false IF there are no override parameters present.
      */
     public static boolean overrideStringCheck() {
     	// I declare my array here now because at this point, my variables should be populated and ready to go after constructor sets params.
     	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
-    	boolean overrideFlag = false;
     	
     	for (int i = 0; i < overrideVars.length; i++) {
     		if (overrideVars[i] != "")
