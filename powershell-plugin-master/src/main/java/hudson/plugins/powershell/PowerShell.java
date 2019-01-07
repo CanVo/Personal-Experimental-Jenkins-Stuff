@@ -152,7 +152,7 @@ public class PowerShell extends CommandInterpreter {
         
         public FormValidation doCheckStartUrls(@QueryParameter String startUrls) {
         	// Check if the given String contains any prohibited chars that aren't alphanumeric chars + some special chars.
-        	if (!(startUrls.matches("^[a-zA-Z0-9./:,]*$")))
+        	if (!(startUrls.matches("^[a-zA-Z0-9./:,-]*$")))
         		return FormValidation.error("Input not valid! Provided input may have prohibted characters!");
         	
         	return FormValidation.ok();
