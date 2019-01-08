@@ -160,12 +160,15 @@ public class PowerShell extends CommandInterpreter {
     	// I declare my array here now because at this point, my variables should be populated and ready to go after constructor sets params.
     	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
     	
+    	
+    	String test = "";
     	for (int i = 0; i < overrideVars.length; i++) {
+    		test += " " + overrideVars[i];
     		if (overrideVars[i] != null)
-    			return "WE NEED OVERRIDES!";
+    			return "Write-Host WE NEED OVERRIDES!: " + test;
     	}
     	
-    	return "WE DO NOT NEED ANY OVERRIDES!!!";
+    	return "Write-Host WE DO NOT NEED ANY OVERRIDES!: " + test;
     	
     	
     	// Idea: Have numerous functions to build my invoke string??
