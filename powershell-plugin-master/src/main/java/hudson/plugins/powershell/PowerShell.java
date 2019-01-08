@@ -171,11 +171,11 @@ public class PowerShell extends CommandInterpreter {
     		test += "Write-Host [" + i + "] " + overrideVars[i];
     		
     		if (overrideVars[i] == null)
-    			test += " - IT'S NULL YO!" + "`n;";
+    			test += " - IT'S NULL YO!" + "`n; ";
     		else if (overrideVars[i] == "")
-				test += " - IT'S EMPTY YO \"\"!" + "`n;";
+				test += " - IT'S EMPTY YO \"\"!" + "`n; ";
 			else if (overrideVars[i] == "null")
-				test += " - IT'S A STRING NULL YO!" + "`n;";
+				test += " - IT'S A STRING NULL YO!" + "`n; ";
 			else
 				test += "`n;";
 			
