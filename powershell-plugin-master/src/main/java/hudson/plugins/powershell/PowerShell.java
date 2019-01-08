@@ -161,7 +161,7 @@ public class PowerShell extends CommandInterpreter {
     	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
     	
     	for (int i = 0; i < overrideVars.length; i++) {
-    		if (!(overrideVars[i] == null))
+    		if (overrideVars[i] != null)
     			return "WE NEED OVERRIDES!";
     	}
     	
