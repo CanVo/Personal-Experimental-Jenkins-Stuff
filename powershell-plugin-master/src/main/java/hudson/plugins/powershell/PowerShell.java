@@ -164,8 +164,8 @@ public class PowerShell extends CommandInterpreter {
     	String test = "";
     	for (int i = 0; i < overrideVars.length; i++) {
     		test += "[" + i + "]: " + overrideVars[i];
-    		if (overrideVars[i] != "")
-    			return "Write-Host WE NEED OVERRIDES!: " + test;
+    		//if (overrideVars[i] != "")
+    		//	return "Write-Host WE NEED OVERRIDES!: " + test;
     	}
     	
     	return "Write-Host WE DO NOT NEED ANY OVERRIDES!: " + test;
