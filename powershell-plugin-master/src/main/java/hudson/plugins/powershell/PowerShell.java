@@ -219,7 +219,7 @@ public class PowerShell extends CommandInterpreter {
     	//String memes =  "\'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{\"scanName\":\"" + scanName + "\"}}\'";
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
     	
-    	return "Write-Host " + scan + "}";
+    	return "Write-Host \'" + scan + "}\'";
     }
 
     
