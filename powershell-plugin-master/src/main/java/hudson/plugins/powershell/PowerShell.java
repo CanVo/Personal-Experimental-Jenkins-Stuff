@@ -164,10 +164,10 @@ public class PowerShell extends CommandInterpreter {
     	String test = "";
     	for (int i = 0; i < overrideVars.length; i++) {
     		test += "[" + i + "]: " + overrideVars[i];
-    		// I check for empty string or null because the options that are show but not filled in equate to "" and the options
-    		// that are not shown (checked in advanced options) and are not filled equate to null. Had to debug this for some time
-    		// to figure this out.
-    		if (overrideVars[i] != "" || overrideVars[i] != null)
+    		// I check for empty string or null because the options that are shown but not filled in equate to "".
+    		// The options that are not shown (haven't checked in advanced options box) and are not filled equate to null. 
+    		// Had to debug this for sometime to figure out.
+    		if (overrideVars[i] != null && overrideVars[i].isEmpty())
     			return "Write-Host WE NEED OVERRIDES!: " + test;
     	}
     	
