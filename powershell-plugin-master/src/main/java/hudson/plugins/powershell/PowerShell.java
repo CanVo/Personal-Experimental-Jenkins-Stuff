@@ -163,7 +163,7 @@ public class PowerShell extends CommandInterpreter {
     	
     	String test = "";
     	for (int i = 0; i < overrideVars.length; i++) {
-    		test += "[" + i + "]: " + overrideVars[i];
+    		test += "[" + i + "]: " + overrideVars[i] + " also the length is: " + overrideVars[i].length();
     		// I check for empty string or null because the options that are shown but not filled in equate to "".
     		// The options that are not shown (haven't checked in advanced options box) and are not filled equate to null. 
     		// Had to debug this for sometime to figure out.
