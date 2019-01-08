@@ -211,6 +211,12 @@ public class PowerShell extends CommandInterpreter {
     		}
     	}
     	
+    	if (scan.endsWith(", ")) {
+    		scan = scan.substring(0,scan.length() - 2)) + "}";
+    	} else {
+    		scan += "}";
+    	}
+    	
     	
     	
     	// Default Scan:
@@ -218,7 +224,7 @@ public class PowerShell extends CommandInterpreter {
     	//String memes =  "\'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{\"scanName\":\"" + scanName + "\"}}\'";
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
     	
-    	return "Write-Host \'" + scan + "}\'";
+    	return "Write-Host \'" + scan + "\'";
     }
 
     
