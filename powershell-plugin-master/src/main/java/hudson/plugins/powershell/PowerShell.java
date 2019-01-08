@@ -164,8 +164,8 @@ public class PowerShell extends CommandInterpreter {
     	String test = "";
     	for (int i = 0; i < overrideVars.length; i++) {
     		
-    		// I check for empty string or null because the options that are shown but not filled in equate to "".
-    		// The options that are not shown (haven't checked in advanced options box) and are not filled equate to null. 
+    		// I check for length 0 string or null because the options that are shown but not filled in equate to something that is NOT "".
+    		// The options that are not shown (haven't checked in advanced options box) AND are not filled equate to null. 
     		// Had to debug this for sometime to figure out.
     		
     		/*
