@@ -200,7 +200,6 @@ public class PowerShell extends CommandInterpreter {
     	String invoke = "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body"; // '{ \"settingsName\": \"Default\" }'";
     	String scan = "{";
     	for (int i = 0; i < overrideVars.length - 3; i++) {
-    		
     		// Account for null. If the parameter value is null, the value for that paramter will be "".
     		// Important because API call doesn't take "null" but can take empty spaces to indicate no value.
     		if (overrideVars[i] == null) {
@@ -211,10 +210,9 @@ public class PowerShell extends CommandInterpreter {
     		}
     	}
     	
-    	// Ensures that the ending string format is correct for a scan initialization.
+    	// If check to ensure that the ending string format is correct for a proper scan initialization.
     	if (scan.endsWith(", ")) {
     		scan = scan.substring(0,scan.length() - 2) + "}";
-    		//scan += "}";
     	} else {
     		scan += "}";
     	}
