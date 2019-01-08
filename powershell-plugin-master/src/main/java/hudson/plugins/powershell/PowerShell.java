@@ -173,7 +173,7 @@ public class PowerShell extends CommandInterpreter {
     		
     	}
     	
-    	return "Write-Host WE DO NOT NEED ANY OVERRIDES!: " + test;
+    	return "Write-Host FINAL END: " + test;
     	
     	
     	// Idea: Have numerous functions to build my invoke string??
