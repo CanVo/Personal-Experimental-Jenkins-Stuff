@@ -194,7 +194,7 @@ public class PowerShell extends CommandInterpreter {
     	// * ACCOUNT FOR MULTIPLE VALUES FOR START URL CSV STYLE.
     	
     	// Loop to (Length - 3) because we are not accounting for the reuse params. That is a special case.
-    	String scan = "";
+    	String scan = "{ ";
     	for (int i = 0; i < overrideVars.length - 3; i++) {
     		// Account for null. If the parameter value is null, the value for that paramter will be "".
     		// Important because API call doesn't take "null" but can take empty spaces to indicate no value.
@@ -208,15 +208,15 @@ public class PowerShell extends CommandInterpreter {
     	
     	// If check to ensure that the ending string format is correct for a proper scan initialization.
     	if (scan.endsWith(", ")) {
-    		scan = scan.substring(0,scan.length() - 2) + " ";
+    		scan = scan.substring(0,scan.length() - 2) + " }";
     	} else {
-    		scan += "";
+    		scan += "}";
     	}
     	
     	// Default Scan:
     	// Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body '{ "settingsName": "Default" }'
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
-    	String scanInvoke = "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body \'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{ " + scan + "}\'";
+    	String scanInvoke = "Write-Host Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body \'{\"settingsName\":\"" + settingsName + "\", \"overrides\":" + scan + "\'";
     	return scanInvoke;
     }
 
