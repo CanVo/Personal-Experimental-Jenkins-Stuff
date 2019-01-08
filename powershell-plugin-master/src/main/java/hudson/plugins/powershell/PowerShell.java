@@ -28,12 +28,12 @@ $JSON = @'
 '@
 
 
-Invoke-RestMethod -Uri http://EC2AMAZ-468247R:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body $JSON
+Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body $JSON
  */
 public class PowerShell extends CommandInterpreter {
 	
 	private int scanPort;
-	private static String ipInstance, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
+	private String ipInstance, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
 	
 	
 	
@@ -157,8 +157,13 @@ public class PowerShell extends CommandInterpreter {
     	//String memes =  "\'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{\"scanName\":\"" + scanName + "\"}}\'";
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
     	
-    	if (overrideStringCheck())
-    		return "WE DO NEED OUR OVERRIDE!!!";
+    	// I declare my array here now because at this point, my variables should be populated and ready to go after constructor sets params.
+    	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
+    	
+    	for (int i = 0; i < overrideVars.length; i++) {
+    		if (!(overrideVars[i] == null))
+    			return "WE NEED OVERRIDES!";
+    	}
     	
     	return "WE DO NOT NEED ANY OVERRIDES!!!";
     	
@@ -184,13 +189,6 @@ public class PowerShell extends CommandInterpreter {
      * Returns false IF there are no override parameters present.
      */
     public static boolean overrideStringCheck() {
-    	// I declare my array here now because at this point, my variables should be populated and ready to go after constructor sets params.
-    	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
-    	
-    	for (int i = 0; i < overrideVars.length; i++) {
-    		if (!(overrideVars[i] == null))
-    			return true;
-    	}
 
     	return false;
     }
