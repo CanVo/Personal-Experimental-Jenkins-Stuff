@@ -198,7 +198,7 @@ public class PowerShell extends CommandInterpreter {
     	
     	// Loop to (Length - 3) because we are not accounting for the reuse params. That is a special case.
     	String invoke = "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body"; // '{ \"settingsName\": \"Default\" }'";
-    	String scan = "{";
+    	String scan = "{ ";
     	for (int i = 0; i < overrideVars.length - 3; i++) {
     		// Account for null. If the parameter value is null, the value for that paramter will be "".
     		// Important because API call doesn't take "null" but can take empty spaces to indicate no value.
@@ -212,7 +212,7 @@ public class PowerShell extends CommandInterpreter {
     	
     	// If check to ensure that the ending string format is correct for a proper scan initialization.
     	if (scan.endsWith(", ")) {
-    		scan = scan.substring(0,scan.length() - 2) + "}";
+    		scan = scan.substring(0,scan.length() - 2) + " }";
     	} else {
     		scan += "}";
     	}
