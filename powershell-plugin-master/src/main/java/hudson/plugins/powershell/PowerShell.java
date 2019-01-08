@@ -168,7 +168,12 @@ public class PowerShell extends CommandInterpreter {
     		// The options that are not shown (haven't checked in advanced options box) and are not filled equate to null. 
     		// Had to debug this for sometime to figure out.
     		
-    		test += "[" + i + "]: " + overrideVars[i] + " also the length is: " + overrideVars[i].length() + "\n";
+    		if (overrideVars[i] == null) {
+    			test += "[" + i + "]: " + "null (for real)" + " also the length is: " + overrideVars[i].length() + "\n";
+    		}
+    		else {
+    			test += "[" + i + "]: " + overrideVars[i] + " also the length is: " + overrideVars[i].length() + "\n";
+    		}
     	}
     	
     	return "Write-Host WE DO NOT NEED ANY OVERRIDES!: " + test;
