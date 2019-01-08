@@ -169,7 +169,7 @@ public class PowerShell extends CommandInterpreter {
     		// Had to debug this for sometime to figure out.
     		
     		//if (overrideVars[i] != "null" || overrideVars[i].length() != 0)
-    		if (overrideVars[i] == null) {
+    		if (overrideVars[i] != null) {
     			test += "[" + i + "]: " + "null" + " also the length is: " + overrideVars[i].length() + "\n";
     		}
     		else {
