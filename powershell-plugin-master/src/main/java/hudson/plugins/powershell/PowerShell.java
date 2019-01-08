@@ -192,6 +192,7 @@ public class PowerShell extends CommandInterpreter {
     	//TODO:
     	// * MAKE SURE TO SANITIZE FOR SKETCHY INPUT. IF I SEE A SEMICOLON? RETURN NOTHING!
     	// * ACCOUNT FOR MULTIPLE VALUES FOR START URL CSV STYLE.
+    	// * ACCOUNT FOR BRACKETS.
     	
     	// Loop to (Length - 3) because we are not accounting for the reuse params. That is a special case.
     	String scan = "{ ";
