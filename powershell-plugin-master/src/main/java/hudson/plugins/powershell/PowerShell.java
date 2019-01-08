@@ -182,7 +182,7 @@ public class PowerShell extends CommandInterpreter {
     	 * Example Scan With Default Parameters And No Override Parameters:
     	 * curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ "settingsName": "Default" }' http://localhost:8083/webinspect/scanner/scans
     	 ************************************************************************************************************/
-    	return "Write-Host Yelp!";
+    	//return "Write-Host Yelp!";
     	
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans";	
     }
