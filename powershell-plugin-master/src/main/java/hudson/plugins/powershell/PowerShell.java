@@ -12,30 +12,11 @@ import org.apache.commons.lang.SystemUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 
-
-
-/**
-# "{\"settingsName\":\"Default\", \"overrides\":{\"scanName\":\"PLSWORK!\", \"startUrls\":[\"http://zero.webappsecurity.com/\"],\"scanScope\":\"self\", \"scopedPaths\":[\"/\",\"/login.html\"]}}"
-
-# Valid Scans
-# "settingsName":"Default", "overrides":{"scanName":"PLSWORK!", "startUrls":["http://zero.webappsecurity.com/"],"scanScope":"self", "scopedPaths":["/","/login.html"]}
-# "settingsName":"Default", "overrides":{"scanName":"PLSWORK!", "startUrls":["http://zero.webappsecurity.com/"]}
-
-$JSON = @'
-{
- "settingsName":"Default", "overrides":{"scanName":"PLSWORK!", "startUrls":["http://zero.webappsecurity.com/"],"scanScope":"self", "scopedPaths":["/","/login.html"]}
-}
-'@
-
-
-Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body $JSON
- */
 public class PowerShell extends CommandInterpreter {
 	
 	private int scanPort;
 	private String ipInstance, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
-	
-	
+
 	
     @DataBoundConstructor
     public PowerShell(String ipInstance, int scanPort, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParameters, String smartCredentials, String networkCredentials, String networkAuthenticationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String scanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) { 
@@ -46,7 +27,7 @@ public class PowerShell extends CommandInterpreter {
     	this.scanPort = scanPort;
     	this.settingsName = settingsName;
     	
-    	//********** REQUIRES OVERRIDE STRING ***********//
+    	//********** SCAN CASE 1: REQUIRES OVERRIDE STRING ***********//
     	this.scanName = scanName;
     	this.startUrls = startUrls;
     	this.crawlAuditMode = crawlAuditMode;
@@ -71,8 +52,8 @@ public class PowerShell extends CommandInterpreter {
     	this.isGlobal = isGlobal;
     	this.serialNumber = serialNumber;
     	this.bytes = bytes;
-    	//***********************************************//
     	
+    	//********** SCAN CASE 2: REQUIRES REUSE SCAN STRING **********//
     	this.reuseScan = reuseScan;
     	this.scanId = scanId;
     	this.mode = mode;
@@ -157,66 +138,69 @@ public class PowerShell extends CommandInterpreter {
     	//String memes =  "\'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{\"scanName\":\"" + scanName + "\"}}\'";
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
     	
-    	// I declare my array here now because at this point, my variables should be populated and ready to go after constructor sets params.
+    	
+    	/************************* SCAN CASE 1: API Scan call includes override parameters *****************
+    	 * Description: In this scan case, the user will be utilizing some parameters that require a specific call to the API.
+    	 * 				That specific call consists of utilizing the "override" segment with the included parameters. If that
+    	 * 				is the case, then we make sure we build our scan string with the "overrides" portion present.
+    	 * 
+    	 * Example Scan With ADVANCED OVERRIDE PARAMETERS:
+    	 * curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ "settingsName": "Default", "overrides": { "startUrls": ["http://myhost/appPath/"], "scanScope": "self", "scopedPaths": ["/appPath/","/appPath/level1/"] } }' http://localhost:8083/webinspect/scanner/scans
+    	 ***************************************************************************************************/
+    	
+    	// I declare my array here now because at this point, my scan parameter variables should be populated and ready to go after the constructor sets them.
     	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
+    	for (int i = 0; i < overrideVars.length; i++) {
+    		// I check for length 0 string or null because the options that are shown on the page but are not filled in equate to something that is NOT "" but length of 0.
+    		// The options that are not shown (haven't checked in advanced options box) AND are not filled in equate to null. 
+    		// Had to debug this for sometime to figure out.	
+    		if (overrideVars[i] != null && overrideVars[i].length() != 0) {
+    			// TODO: Construct our string then.
+    			// return *constructed string*
+    		}
+    	}
+
+    	/************************* SCAN CASE 2: API Scan call is utilizing reuse scan parameter *****************
+    	 * Description: In this scan case, the user will be utilizing the reuse scan parameter. In this case,
+    	 * 				the scan call will be using an exisiting scan as the baseline and overrides can be specified.
+    	 * 				
+    	 * 				*** IMPORTANT NOTE: If this is the case, then settingsName will be ignored (sine we're baselining it).
+    	 * 
+    	 * 
+    	 * Example Scan with REUSE PARAMETERS:
+		 * curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ "reuseScan":{"scanId":"98451e29-8209-4286-a9dc-b686c64fc30c","mode":"Incremental"} }' http://localhost:8083/webinspect/scanner/scans
+    	 * 
+    	 *******************************************************************************************************/
+    	return "*reuse scan call*"
     	
     	
-    	String test = "";
+    	/************************* SCAN CASE 3: API Scan call is just using base default parameters *****************
+    	 * Description: In this scan case, the user will be utilizing just base default parameters that are required and
+    	 * 				omitting the special case parameters (reuse and overrides).
+    	 * 
+    	 * Example Scan With Default Parameters And No Override Parameters:
+    	 * curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ "settingsName": "Default" }' http://localhost:8083/webinspect/scanner/scans
+    	 ************************************************************************************************************/
+    	return "Write-Host Yelp!";
+    	
+    	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans";	
+    }
+    
+    
+    /* Function: overrideStringBuild
+     * 
+     * Purpose: Will construct the powershell scan string that consists of the powershell API call
+     * 			with provided scan parameters from the user.
+     * 			
+     */
+    public static String overrideStringBuild(String[] overrideVars) {
+    	
     	for (int i = 0; i < overrideVars.length; i++) {
     		
-    		// I check for length 0 string or null because the options that are shown but not filled in equate to something that is NOT "".
-    		// The options that are not shown (haven't checked in advanced options box) AND are not filled equate to null. 
-    		// Had to debug this for sometime to figure out.
-    		
-    		/*
-    		test += "Write-Host [" + i + "] " + overrideVars[i];
-    		
-    		if (overrideVars[i] == null)
-    			test += " - IT'S NULL YO! " + "`n ; ";
-    		else if (overrideVars[i] == "")
-				test += " - IT'S EMPTY YO \"\"! " + "`n ; ";
-			else if (overrideVars[i] == "null")
-				test += " - IT'S A STRING NULL YO! " + "`n ; ";
-			else if (overrideVars[i].length() == 0)
-				test += " - IT'S LENGTH 0 YO! " + "`n ; ";
-			else
-				test += "`n;";*/
-    		
-    		if (overrideVars[i] != null && overrideVars[i].length() != 0) {
-    			return "Write-Host WE DO NEED OVERRIDE STRING!";
-    		}
-			
     	}
     	
-    	return "Write-Host WE DO NOT NEED OVERRIDE STRING!";
-    	
-    	
-    	// Idea: Have numerous functions to build my invoke string??
-    	// TODO: 
-    	// IE: If null, return nothing for string concatenation.
-    	// Else , build string!
-    	
-    	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans";
-    	
+    	return "Write-Host overrideStringBuild";
     }
-    
-    
-    
-    /*
-     * Function overrideStringCheck
-     * 
-     * Purpose: Check our parameters that require the override string and see if there are any of them present.
-     * 			If there is, our API call will have to account for it.
-     * 
-     * Returns true IF there are override parameters present.
-     * Returns false IF there are no override parameters present.
-     */
-    public static boolean overrideStringCheck() {
-
-    	return false;
-    }
-    
-    
 
     
     
@@ -243,6 +227,7 @@ public class PowerShell extends CommandInterpreter {
          */
         public String getDisplayName() {
             return "W.I. Create Scan";
+            // return "W.I. Create Scan and Wait Until Finish";
         }
         
         
