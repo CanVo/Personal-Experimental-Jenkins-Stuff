@@ -167,8 +167,8 @@ public class PowerShell extends CommandInterpreter {
     		// I check for empty string or null because the options that are shown but not filled in equate to "".
     		// The options that are not shown (haven't checked in advanced options box) and are not filled equate to null. 
     		// Had to debug this for sometime to figure out.
-    		if (overrideVars[i] != null && overrideVars[i].isEmpty())
-    			return "Write-Host WE NEED OVERRIDES!: " + test;
+    		//if (overrideVars[i] != null && overrideVars[i].isEmpty())
+    		// 	return "Write-Host WE NEED OVERRIDES!: " + test;
     	}
     	
     	return "Write-Host WE DO NOT NEED ANY OVERRIDES!: " + test;
