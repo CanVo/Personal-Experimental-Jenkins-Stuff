@@ -168,7 +168,7 @@ public class PowerShell extends CommandInterpreter {
     		// The options that are not shown (haven't checked in advanced options box) and are not filled equate to null. 
     		// Had to debug this for sometime to figure out.
     		
-    		test = "[" + i + "] " + overrideVars[i];
+    		test = "[" + i + "] " + overrideVars[i] + "\n";
     		
     		
     	}
