@@ -190,8 +190,8 @@ public class PowerShell extends CommandInterpreter {
      */
     public static String overrideStringBuild(String ipInstance, int scanPort, String settingsName, String[] overrideVars) {
     	//TODO:
-    	// MAKE SURE TO SANITIZE FOR SKETCHY INPUT. IF I SEE A SEMICOLON? RETURN NOTHING!
-    	
+    	// * MAKE SURE TO SANITIZE FOR SKETCHY INPUT. IF I SEE A SEMICOLON? RETURN NOTHING!
+    	// * ACCOUNT FOR MULTIPLE VALUES FOR START URL CSV STYLE.
     	
     	// Loop to (Length - 3) because we are not accounting for the reuse params. That is a special case.
     	String scan = "{ ";
@@ -216,7 +216,7 @@ public class PowerShell extends CommandInterpreter {
     	// Default Scan:
     	// Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body '{ "settingsName": "Default" }'
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
-    	String scanInvoke = "Write-Host Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body \'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{ " + scan + "}\'";
+    	String scanInvoke = "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body \'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{ " + scan + "}\'";
     	return scanInvoke;
     }
 
