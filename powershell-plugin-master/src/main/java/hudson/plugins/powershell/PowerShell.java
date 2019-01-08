@@ -129,9 +129,6 @@ public class PowerShell extends CommandInterpreter {
     public static String intializeCommand(String ipInstance, int scanPort, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParameters, String smartCredentials, String networkCredentials, String networkAuthenticationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String scanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) {  	
     	// Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body '{ "settingsName": "Default" }'
     	// Remember to check and sanitize.
-    	// Assert scan port is a number and a valid port.
-    	
-    	// *** Do if check on what operation we're trying to do at the minute.
     	
     	// Default Scan:
     	// Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body '{ "settingsName": "Default" }'
@@ -139,39 +136,36 @@ public class PowerShell extends CommandInterpreter {
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
     	
     	
-    	/************************* SCAN CASE 1: API Scan call includes override parameters *****************
-    	 * Description: In this scan case, the user will be utilizing some parameters that require a specific call to the API.
-    	 * 				That specific call consists of utilizing the "override" segment with the included parameters. If that
-    	 * 				is the case, then we make sure we build our scan string with the "overrides" portion present.
-    	 * 
-    	 * Example Scan With ADVANCED OVERRIDE PARAMETERS:
-    	 * curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ "settingsName": "Default", "overrides": { "startUrls": ["http://myhost/appPath/"], "scanScope": "self", "scopedPaths": ["/appPath/","/appPath/level1/"] } }' http://localhost:8083/webinspect/scanner/scans
-    	 ***************************************************************************************************/
+    	/************************* SCAN CASE 1: API Scan call includes override parameters ********************
+    	* Description: In this scan case, the user will be utilizing some parameters that require a specific call to the API.
+    	* 				That specific call consists of utilizing the "override" segment with the included parameters. If that
+    	* 				is the case, then we make sure we build our scan string with the "overrides" portion present.
+    	* 
+    	* Example Scan With ADVANCED OVERRIDE PARAMETERS:
+    	* curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ "settingsName": "Default", "overrides": { "startUrls": ["http://myhost/appPath/"], "scanScope": "self", "scopedPaths": ["/appPath/","/appPath/level1/"] } }' http://localhost:8083/webinspect/scanner/scans
+    	***************************************************************************************************/
     	
     	// I declare my array here now because at this point, my scan parameter variables should be populated and ready to go after the constructor sets them.
     	String[] overrideVars = {scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes};
     	for (int i = 0; i < overrideVars.length; i++) {
     		// I check for length 0 string or null because the options that are shown on the page but are not filled in equate to something that is NOT "" but length of 0.
     		// The options that are not shown (haven't checked in advanced options box) AND are not filled in equate to null. 
-    		// Had to debug this for sometime to figure out.	
+    		// Logic: As soon as I find an override parameter, automatically construct an override scan string.
     		if (overrideVars[i] != null && overrideVars[i].length() != 0) {
     			return overrideStringBuild(ipInstance, scanPort, settingsName, overrideVars);
-    			// TODO: Construct our string then.
-    			// return *constructed string*
     		}
     	}
 
     	/************************* SCAN CASE 2: API Scan call is utilizing reuse scan parameter *****************
-    	 * Description: In this scan case, the user will be utilizing the reuse scan parameter. For this case,
-    	 * 				the scan call will be using an exisiting scan as the baseline and overrides can be specified if desired.
-    	 * 				
-    	 * 				*** IMPORTANT NOTE: If this is the case, then settingsName will be ignored for the overrides.
-    	 * 
-    	 * 
-    	 * Example Scan with REUSE PARAMETERS:
-		 * curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ "reuseScan":{"scanId":"98451e29-8209-4286-a9dc-b686c64fc30c","mode":"Incremental"} }' http://localhost:8083/webinspect/scanner/scans
-    	 * 
-    	 *******************************************************************************************************/
+    	*Description: In this scan case, the user will be utilizing the reuse scan parameter. For this case,
+    	* 				the scan call will be using an exisiting scan as the baseline and overrides can be specified if desired.
+    	* 				
+    	* 				*** IMPORTANT NOTE: If this is the case, then settingsName will be ignored for the overrides.
+    	* 
+    	* Example Scan with REUSE PARAMETERS:
+    	* curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ "reuseScan":{"scanId":"98451e29-8209-4286-a9dc-b686c64fc30c","mode":"Incremental"} }' http://localhost:8083/webinspect/scanner/scans
+    	* 
+    	*******************************************************************************************************/
     	return "Write-Host *reuse scan call*";
     	
     	
@@ -195,9 +189,11 @@ public class PowerShell extends CommandInterpreter {
      * 			
      */
     public static String overrideStringBuild(String ipInstance, int scanPort, String settingsName, String[] overrideVars) {
+    	//TODO:
+    	// MAKE SURE TO SANITIZE FOR SKETCHY INPUT. IF I SEE A SEMICOLON? RETURN NOTHING!
+    	
     	
     	// Loop to (Length - 3) because we are not accounting for the reuse params. That is a special case.
-    	String invoke = "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body"; // '{ \"settingsName\": \"Default\" }'";
     	String scan = "{ ";
     	for (int i = 0; i < overrideVars.length - 3; i++) {
     		// Account for null. If the parameter value is null, the value for that paramter will be "".
@@ -217,14 +213,11 @@ public class PowerShell extends CommandInterpreter {
     		scan += "}";
     	}
     	
-    	
-    	
     	// Default Scan:
     	// Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body '{ "settingsName": "Default" }'
-    	//String memes =  "\'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{\"scanName\":\"" + scanName + "\"}}\'";
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
-    	
-    	return "Write-Host \'" + scan + "\'";
+    	String scanInvoke = "Write-Host Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body \'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{ " + scan + "}\'";
+    	return scanInvoke;
     }
 
     
