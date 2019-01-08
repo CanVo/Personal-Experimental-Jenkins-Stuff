@@ -168,9 +168,15 @@ public class PowerShell extends CommandInterpreter {
     		// The options that are not shown (haven't checked in advanced options box) and are not filled equate to null. 
     		// Had to debug this for sometime to figure out.
     		
-    		test += "Write-Host [" + i + "] " + overrideVars[i] + "`n;";
+    		test += "Write-Host [" + i + "] " + overrideVars[i];
     		
-    		
+    		if (overrideVars[i] == null)
+    			test += " - IT'S NULL YO!"+ "`n;";
+    		else if (overrideVars[i] == "")
+				test += " - IT'S EMPTY YO \"\""+ "`n;";
+			else
+				test += "`n;";
+			
     	}
     	
     	return "Write-Host FINAL END: " + test;
