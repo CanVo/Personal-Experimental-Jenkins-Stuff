@@ -207,7 +207,7 @@ public class PowerShell extends CommandInterpreter {
     			// {"scanName":""}
     			scan += "\"" + scanParamStrings[i] + "\":\"\"";
     		} else {
-    			scan += "\"" + scanParamStrings[i] + "\"" + overrideVars[i] +"\", ";
+    			scan += "\"" + scanParamStrings[i] + "\":\"" + overrideVars[i] +"\", ";
     		}
     		
     		
