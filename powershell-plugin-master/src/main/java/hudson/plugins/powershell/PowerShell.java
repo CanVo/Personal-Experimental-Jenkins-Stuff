@@ -16,13 +16,13 @@ public class PowerShell extends CommandInterpreter {
 	
 	private int scanPort;
 	private String ipInstance, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
-
+	private static final String [] scanParamStrings {"scanName", "startUrls", "crawlAuditMode", "sharedThreads", "crawlThreads", "auditThreads", "startOption", "loginMacro", "workFlowMacros", "tcMarcoParameters", "smartCredentials", "networkCredentials", "networkAuthenticationMode", "allowedHosts", "policyID", "checkIDs", "dontStartScan", "scanScope", "scopedPaths", "clientCertification", "storeName", "isGlobal", "serialNumber", "bytes", "reuseScan", "scanId", "mode";}
 	
     @DataBoundConstructor
     public PowerShell(String ipInstance, int scanPort, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParameters, String smartCredentials, String networkCredentials, String networkAuthenticationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String scanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) { 
     	super(intializeCommand(ipInstance, scanPort, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode));
     	
-    	// To save on code space, I can probably do this by making a loop via array or something.
+    	//********** Mandatory Parameters ****************************//
     	this.ipInstance = ipInstance;
     	this.scanPort = scanPort;
     	this.settingsName = settingsName;
@@ -155,23 +155,24 @@ public class PowerShell extends CommandInterpreter {
     		// The options that are not shown (haven't checked in advanced options box) AND are not filled in equate to null. 
     		// Had to debug this for sometime to figure out.	
     		if (overrideVars[i] != null && overrideVars[i].length() != 0) {
+    			return overrideStringBuild(ipInstance, scanPort, settingsName, overrideVars);
     			// TODO: Construct our string then.
     			// return *constructed string*
     		}
     	}
 
     	/************************* SCAN CASE 2: API Scan call is utilizing reuse scan parameter *****************
-    	 * Description: In this scan case, the user will be utilizing the reuse scan parameter. In this case,
-    	 * 				the scan call will be using an exisiting scan as the baseline and overrides can be specified.
+    	 * Description: In this scan case, the user will be utilizing the reuse scan parameter. For this case,
+    	 * 				the scan call will be using an exisiting scan as the baseline and overrides can be specified if desired.
     	 * 				
-    	 * 				*** IMPORTANT NOTE: If this is the case, then settingsName will be ignored (sine we're baselining it).
+    	 * 				*** IMPORTANT NOTE: If this is the case, then settingsName will be ignored for the overrides.
     	 * 
     	 * 
     	 * Example Scan with REUSE PARAMETERS:
 		 * curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ "reuseScan":{"scanId":"98451e29-8209-4286-a9dc-b686c64fc30c","mode":"Incremental"} }' http://localhost:8083/webinspect/scanner/scans
     	 * 
     	 *******************************************************************************************************/
-    	return "*reuse scan call*"
+    	return "Write-Host *reuse scan call*"
     	
     	
     	/************************* SCAN CASE 3: API Scan call is just using base default parameters *****************
@@ -193,13 +194,32 @@ public class PowerShell extends CommandInterpreter {
      * 			with provided scan parameters from the user.
      * 			
      */
-    public static String overrideStringBuild(String[] overrideVars) {
+    public static String overrideStringBuild(String ipInstance, Int scanPort, String settingsName, String[] overrideVars) {
     	
-    	for (int i = 0; i < overrideVars.length; i++) {
+    	// Loop to (Length - 3) because we are not accounting for the reuse params. That is a special case.
+    	String invoke = "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body"; // '{ \"settingsName\": \"Default\" }'";
+    	String scan = "{";
+    	for (int i = 0; i < overrideVars.length - 3; i++) {
+    		
+    		// Account for null. If null, the value for that paramter will be "".
+    		// Important because API call doesn't take "null" but can take empty spaces for no value.
+    		if (overrideVars[i] == null) {
+    			// {"scanName":""}
+    			scan += "\"" + scanParamStrings[i] + "\":\"\"";
+    		} else {
+    			scan += "\"" + scanParamStrings[i] + "\"" + overrideVars[i] +"\", ";
+    		}
+    		
     		
     	}
     	
-    	return "Write-Host overrideStringBuild";
+    	
+    	// Default Scan:
+    	// Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body '{ "settingsName": "Default" }'
+    	//String memes =  "\'{\"settingsName\":\"" + settingsName + "\", \"overrides\":{\"scanName\":\"" + scanName + "\"}}\'";
+    	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
+    	
+    	return "Write-Host scan};
     }
 
     
