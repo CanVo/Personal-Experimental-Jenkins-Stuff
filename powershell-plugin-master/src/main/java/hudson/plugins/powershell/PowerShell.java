@@ -205,13 +205,12 @@ public class PowerShell extends CommandInterpreter {
     		// Important because API call doesn't take "null" but can take empty spaces to indicate no value.
     		if (overrideVars[i] == null) {
     			// {"scanName":""}
-    			scan += "\"" + scanParamStrings[i] + "\":\"\"";
+    			scan += "\"" + scanParamStrings[i] + "\":\"\", ";
     		} else {
     			scan += "\"" + scanParamStrings[i] + "\":\"" + overrideVars[i] +"\", ";
     		}
-    		
-    		
     	}
+    	
     	
     	
     	// Default Scan:
