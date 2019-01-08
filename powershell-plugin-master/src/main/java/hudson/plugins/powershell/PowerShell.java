@@ -201,8 +201,8 @@ public class PowerShell extends CommandInterpreter {
     	String scan = "{";
     	for (int i = 0; i < overrideVars.length - 3; i++) {
     		
-    		// Account for null. If null, the value for that paramter will be "".
-    		// Important because API call doesn't take "null" but can take empty spaces for no value.
+    		// Account for null. If the parameter value is null, the value for that paramter will be "".
+    		// Important because API call doesn't take "null" but can take empty spaces to indicate no value.
     		if (overrideVars[i] == null) {
     			// {"scanName":""}
     			scan += "\"" + scanParamStrings[i] + "\":\"\"";
