@@ -177,7 +177,7 @@ public class PowerShell extends CommandInterpreter {
 			else if (overrideVars[i] == "null")
 				test += " - IT'S A STRING NULL YO! " + "`n ; ";
 			else if (overrideVars[i].length() == 0)
-				test =+ " - IT'S LENGTH 0 YO! " + "`n ; ";
+				test += " - IT'S LENGTH 0 YO! " + "`n ; ";
 			else
 				test += "`n;";
 			
