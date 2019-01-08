@@ -168,6 +168,7 @@ public class PowerShell extends CommandInterpreter {
     		// The options that are not shown (haven't checked in advanced options box) and are not filled equate to null. 
     		// Had to debug this for sometime to figure out.
     		
+    		/*
     		test += "Write-Host [" + i + "] " + overrideVars[i];
     		
     		if (overrideVars[i] == null)
@@ -179,11 +180,15 @@ public class PowerShell extends CommandInterpreter {
 			else if (overrideVars[i].length() == 0)
 				test += " - IT'S LENGTH 0 YO! " + "`n ; ";
 			else
-				test += "`n;";
+				test += "`n;";*/
+    		
+    		if (overrideVars[i] != null || overrideVars[i].length() == 0) {
+    			return "Write-Host WE DO NEED OVERRIDE STRING!";
+    		}
 			
     	}
     	
-    	return "Write-Host FINAL END: " + test;
+    	return "Write-Host WE DO NOT NEED OVERRIDE STRING!";
     	
     	
     	// Idea: Have numerous functions to build my invoke string??
