@@ -169,8 +169,9 @@ public class PowerShell extends CommandInterpreter {
     		// Had to debug this for sometime to figure out.
     		
     		//if (overrideVars[i] != "null" || overrideVars[i].length() != 0)
-    		if (overrideVars[i] == null || overrideVars[i] == "null")
+    		if (overrideVars[i] != null || overrideVars[i] != "null") {
     		 	return "Write-Host WE NEED OVERRIDES!: " + test;
+    		}
     		
     		test += "Write-Host [" + i + "]: " + overrideVars[i] + " also the length is: " + overrideVars[i].length() + "\n";
     	}
