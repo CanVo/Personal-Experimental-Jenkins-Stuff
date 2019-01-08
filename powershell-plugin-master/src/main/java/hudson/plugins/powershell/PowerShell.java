@@ -16,7 +16,7 @@ public class PowerShell extends CommandInterpreter {
 	
 	private int scanPort;
 	private String ipInstance, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
-	private static final String [] scanParamStrings {"scanName", "startUrls", "crawlAuditMode", "sharedThreads", "crawlThreads", "auditThreads", "startOption", "loginMacro", "workFlowMacros", "tcMarcoParameters", "smartCredentials", "networkCredentials", "networkAuthenticationMode", "allowedHosts", "policyID", "checkIDs", "dontStartScan", "scanScope", "scopedPaths", "clientCertification", "storeName", "isGlobal", "serialNumber", "bytes", "reuseScan", "scanId", "mode";}
+	private static final String [] scanParamStrings {"scanName", "startUrls", "crawlAuditMode", "sharedThreads", "crawlThreads", "auditThreads", "startOption", "loginMacro", "workFlowMacros", "tcMarcoParameters", "smartCredentials", "networkCredentials", "networkAuthenticationMode", "allowedHosts", "policyID", "checkIDs", "dontStartScan", "scanScope", "scopedPaths", "clientCertification", "storeName", "isGlobal", "serialNumber", "bytes", "reuseScan", "scanId", "mode"};
 	
     @DataBoundConstructor
     public PowerShell(String ipInstance, int scanPort, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParameters, String smartCredentials, String networkCredentials, String networkAuthenticationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String scanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) { 
@@ -172,7 +172,7 @@ public class PowerShell extends CommandInterpreter {
 		 * curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ "reuseScan":{"scanId":"98451e29-8209-4286-a9dc-b686c64fc30c","mode":"Incremental"} }' http://localhost:8083/webinspect/scanner/scans
     	 * 
     	 *******************************************************************************************************/
-    	return "Write-Host *reuse scan call*"
+    	return "Write-Host *reuse scan call*";
     	
     	
     	/************************* SCAN CASE 3: API Scan call is just using base default parameters *****************
