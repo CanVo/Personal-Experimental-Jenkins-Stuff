@@ -244,12 +244,11 @@ public class PowerShell extends CommandInterpreter {
      */
     
     public static String overrideStringBuildHelper(String overrideVarName, String overrideVarValue) {
+    	String builtString;
     	// Check if it's a box utilizing val.
     	// Check if it's comma seperated
     	// Maybe account for thread ints without the "".
     	// ACCOUNT FOR TC MACRO PARAMS BUILDER!!!!
-    	
-    	String builtString;
     	
     	
     	// Example: - overrideVarName = scanName
