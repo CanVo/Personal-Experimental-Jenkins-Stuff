@@ -257,20 +257,19 @@ public class PowerShell extends CommandInterpreter {
     	// 			builtString = "scanName":"My First Scan"
     	if (boxedScanParamStrings.contains(overrideVarName)){
     		if (overrideVarValue.length() == 0) {		// If length 0 for box parameters, do not use boxes.
-    			if (overrideVarName == "loginMacro")	// If loginMacro is not provided, do not include param in our scan string or else it will result in an error.
-    				return "";
+    			//if (overrideVarName == "loginMacro")	// If loginMacro is not provided, do not include param in our scan string or else it will result in an error.
+    			//	return "";
     			
     			builtString = "\"" + overrideVarName + "\": \"" + overrideVarValue +"\", ";
-    		}
-    		else {
+    		} else {
     			// Account for comma strings here.
     			builtString = "\"" + overrideVarName + "\": [\"" + overrideVarValue +"\"], ";
     		}
-    	else {
+    	} else {
     		builtString = "\"" + overrideVarName + "\":\"" + overrideVarValue +"\", ";
     	}
     	
-    	}
+    	
     	
     	return builtString;
     }
