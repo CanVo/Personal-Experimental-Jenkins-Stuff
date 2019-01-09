@@ -11,7 +11,7 @@ import hudson.util.FormValidation;
 import org.apache.commons.lang.SystemUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
-import java.util.ArrayList;
+import java.util.List;
 
 public class PowerShell extends CommandInterpreter {
 	
