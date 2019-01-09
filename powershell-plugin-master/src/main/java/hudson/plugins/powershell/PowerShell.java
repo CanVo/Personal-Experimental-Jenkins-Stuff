@@ -258,7 +258,7 @@ public class PowerShell extends CommandInterpreter {
     	// 			builtString = "scanName":"My First Scan"
     	if (boxedScanParamStrings.contains(overrideVarName)){
     		if (overrideVarValue.length() == 0) {
-    			builtString = "\"" + overrideVarName + "\": [" +. overrideVarValue + "], ";
+    			builtString = "\"" + overrideVarName + "\": [" + overrideVarValue + "], ";
     		}		
     		else {
     			builtString = "\"" + overrideVarName + "\": [\"" + overrideVarValue +"\"], ";
