@@ -222,7 +222,7 @@ public class PowerShell extends CommandInterpreter {
     	// Default Scan:
     	// Invoke-RestMethod -Uri http://localhost:8083/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body '{ "settingsName": "Default" }'
     	//return "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body " + memes;
-    	String scanInvoke = "Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body \'{ \"settingsName\":\"" + settingsName + "\", \"overrides\":" + scan + "\'";
+    	String scanInvoke = "Write-Host Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body \'{ \"settingsName\":\"" + settingsName + "\", \"overrides\":" + scan + "\'";
     	//String scanInvoke = "Write-Host \'" + scan + " \'";
     	return scanInvoke;
     }
@@ -247,7 +247,7 @@ public class PowerShell extends CommandInterpreter {
     	// Check if it's a box utilizing val.
     	// Check if it's comma seperated
     	// Maybe account for thread ints without the "".
-    	// 
+    	// ACCOUNT FOR TC MACRO PARAMS BUILDER!!!!
     	
     	String builtString;
     	
@@ -257,10 +257,6 @@ public class PowerShell extends CommandInterpreter {
     	//
     	// 			builtString = "scanName":"My First Scan"
     	if (boxedScanParamStrings.contains(overrideVarName)){
-    		if (overrideVarValue.length() == 0) {
-    			builtString = "\"" + overrideVarName + "\": [" + overrideVarValue + "], ";
-    		}		
-    		else {
     			builtString = "\"" + overrideVarName + "\": [\"" + overrideVarValue +"\"], ";
     		}
     		//builtString = "\"" + overrideVarName + "\": [\"" + overrideVarValue +"\"], ";
