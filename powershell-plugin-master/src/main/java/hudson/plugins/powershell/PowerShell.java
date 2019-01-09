@@ -264,7 +264,7 @@ public class PowerShell extends CommandInterpreter {
     		}
     		else {
     			builtString = "\"" + overrideVarName + "\": [\"" + overrideVarValue +"\"], ";
-    	}
+    		}
     	else {
     		builtString = "\"" + overrideVarName + "\":\"" + overrideVarValue +"\", ";
     	}
