@@ -241,7 +241,7 @@ public class PowerShell extends CommandInterpreter {
     
     public static String overrideStringBuildHelper(String overrideVarString, String overrideVarValue) {
     	// Check if it's a box utilizing val.
-    	String builtString = "\"" + overrideVarString + "\":\"" + overrideVarsValue +"\", ";
+    	String builtString = "\"" + overrideVarString + "\":\"" + overrideVarValue +"\", ";
     	return builtString;
     }
     
