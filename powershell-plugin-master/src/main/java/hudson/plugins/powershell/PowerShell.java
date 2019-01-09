@@ -19,6 +19,7 @@ public class PowerShell extends CommandInterpreter {
 	private String ipInstance, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
 	private static String [] overrideScanParamStrings = {"scanName", "startUrls", "crawlAuditMode", "sharedThreads", "crawlThreads", "auditThreads", "startOption", "loginMacro", "workFlowMacros", "tcMarcoParameters", "smartCredentials", "networkCredentials", "networkAuthenticationMode", "allowedHosts", "policyID", "checkIDs", "dontStartScan", "scanScope", "scopedPaths", "clientCertification", "storeName", "isGlobal", "serialNumber", "bytes", "reuseScan", "scanId", "mode"};
 	
+	
     @DataBoundConstructor
     public PowerShell(String ipInstance, int scanPort, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParameters, String smartCredentials, String networkCredentials, String networkAuthenticationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String scanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) { 
     	super(intializeCommand(ipInstance, scanPort, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode));
@@ -199,10 +200,11 @@ public class PowerShell extends CommandInterpreter {
     		// Account for null. If the parameter value is null, the value for that paramter will be "".
     		// Important because API call doesn't take "null" but can take empty spaces to indicate no value.
     		if (overrideVars[i] == null) {
-    			// {"scanName":""}
-    			scan += "\"" + overrideScanParamStrings[i] + "\":\"\", ";
+    			//scan += "\"" + overrideScanParamStrings[i] + "\":\"\", ";
+    			scan += overrideStringBuildHelper(overrideScanParamStrings[i], "");
     		} else {
-    			scan += "\"" + overrideScanParamStrings[i] + "\":\"" + overrideVars[i] +"\", ";
+    			//scan += "\"" + overrideScanParamStrings[i] + "\":\"" + overrideVars[i] +"\", ";
+    			scan += overrideStringBuildHelper(overrideScanParamStrings[i], overrideVars[i]);
     		}
     	}
     	
@@ -219,6 +221,45 @@ public class PowerShell extends CommandInterpreter {
     	String scanInvoke = "Write-Host Invoke-RestMethod -Uri http://" + ipInstance + ":" + scanPort + "/webinspect/scanner/scans -Method Post -ContentType 'application/json' -Body \'{ \"settingsName\":\"" + settingsName + "\", \"overrides\":" + scan + "\'";
     	//String scanInvoke = "Write-Host \'" + scan + " \'";
     	return scanInvoke;
+    }
+    
+    /*
+     * Function overrideStringBuildHelper
+     * 
+     * Purpose: Will provide assistance for the scan string concatenation/build for our scans based on
+     * 			provided parameter values. Will make it efficient to check if some of the values utilize
+     * 			a box parameter format:
+     * 	
+     * Example:
+     * 			{"scanName":""}
+    			{"startUrls": ["string"]}
+     * 
+     * Parameters: 
+     * > String overrideVarString: This is the literal string for the parameter name we're filling in.
+     * > String overrideVarValue: This is the value that was entered by the user from the Jenkins job page.
+     */
+    
+    public static String overrideStringBuildHelper(String overrideVarString, String overrideVarValue) {
+    	// Check if it's a box utilizing val.
+    	String builtString = "\"" + overrideVarString + "\":\"" + overrideVarsValue +"\", ";
+    	return builtString;
+    }
+    
+    
+    
+    public static String errorCases(){
+    	
+    	switch (errorCase) {
+    		case 1:
+    			break;
+    		case 2:
+    			break;
+    		case 3;
+    			break;
+    	}
+    	
+    	return "henlo friends! :^)";
+    	
     }
 
     
