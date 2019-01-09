@@ -15,8 +15,9 @@ import org.kohsuke.stapler.QueryParameter;
 public class PowerShell extends CommandInterpreter {
 	
 	private int scanPort;
+	private static int errorCase = 0;	// Check for overflows + injection with special chars.
 	private String ipInstance, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
-	private static String [] scanParamStrings = {"scanName", "startUrls", "crawlAuditMode", "sharedThreads", "crawlThreads", "auditThreads", "startOption", "loginMacro", "workFlowMacros", "tcMarcoParameters", "smartCredentials", "networkCredentials", "networkAuthenticationMode", "allowedHosts", "policyID", "checkIDs", "dontStartScan", "scanScope", "scopedPaths", "clientCertification", "storeName", "isGlobal", "serialNumber", "bytes", "reuseScan", "scanId", "mode"};
+	private static String [] overrideScanParamStrings = {"scanName", "startUrls", "crawlAuditMode", "sharedThreads", "crawlThreads", "auditThreads", "startOption", "loginMacro", "workFlowMacros", "tcMarcoParameters", "smartCredentials", "networkCredentials", "networkAuthenticationMode", "allowedHosts", "policyID", "checkIDs", "dontStartScan", "scanScope", "scopedPaths", "clientCertification", "storeName", "isGlobal", "serialNumber", "bytes", "reuseScan", "scanId", "mode"};
 	
     @DataBoundConstructor
     public PowerShell(String ipInstance, int scanPort, String settingsName, String scanName, String startUrls, String crawlAuditMode, String sharedThreads, String crawlThreads, String auditThreads, String startOption, String loginMacro, String workFlowMacros, String tcMarcoParameters, String smartCredentials, String networkCredentials, String networkAuthenticationMode, String allowedHosts, String policyID, String checkIDs, String dontStartScan, String scanScope, String scopedPaths, String clientCertification, String storeName, String isGlobal, String serialNumber, String bytes, String reuseScan, String scanId, String mode) { 
@@ -26,7 +27,6 @@ public class PowerShell extends CommandInterpreter {
     	this.ipInstance = ipInstance;
     	this.scanPort = scanPort;
     	this.settingsName = settingsName;
-    	
     	//********** SCAN CASE 1: REQUIRES OVERRIDE STRING ***********//
     	this.scanName = scanName;
     	this.startUrls = startUrls;
@@ -52,7 +52,6 @@ public class PowerShell extends CommandInterpreter {
     	this.isGlobal = isGlobal;
     	this.serialNumber = serialNumber;
     	this.bytes = bytes;
-    	
     	//********** SCAN CASE 2: REQUIRES REUSE SCAN STRING **********//
     	this.reuseScan = reuseScan;
     	this.scanId = scanId;
@@ -201,9 +200,9 @@ public class PowerShell extends CommandInterpreter {
     		// Important because API call doesn't take "null" but can take empty spaces to indicate no value.
     		if (overrideVars[i] == null) {
     			// {"scanName":""}
-    			scan += "\"" + scanParamStrings[i] + "\":\"\", ";
+    			scan += "\"" + overrideScanParamStrings[i] + "\":\"\", ";
     		} else {
-    			scan += "\"" + scanParamStrings[i] + "\":\"" + overrideVars[i] +"\", ";
+    			scan += "\"" + overrideScanParamStrings[i] + "\":\"" + overrideVars[i] +"\", ";
     		}
     	}
     	
