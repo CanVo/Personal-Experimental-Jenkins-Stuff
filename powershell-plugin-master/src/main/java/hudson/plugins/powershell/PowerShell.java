@@ -18,6 +18,8 @@ public class PowerShell extends CommandInterpreter {
 	private static int errorCase = 0;	// Check for overflows + injection with special chars.
 	private String ipInstance, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
 	private static String [] overrideScanParamStrings = {"scanName", "startUrls", "crawlAuditMode", "sharedThreads", "crawlThreads", "auditThreads", "startOption", "loginMacro", "workFlowMacros", "tcMarcoParameters", "smartCredentials", "networkCredentials", "networkAuthenticationMode", "allowedHosts", "policyID", "checkIDs", "dontStartScan", "scanScope", "scopedPaths", "clientCertification", "storeName", "isGlobal", "serialNumber", "bytes", "reuseScan", "scanId", "mode"};
+	// startUrls, WorkFlowMacros, SmartCredentials, networkCredentials, Allowed Hosts, CheckIDs, scopedPaths, 
+	private static String [] boxedScanParamStrings = {"startUrls", "workFlowMacros", "smartCredentials", "networkCredentials", "allowedHosts", "checkIDs", "scopedPaths"};
 	
 	
     @DataBoundConstructor
@@ -241,12 +243,24 @@ public class PowerShell extends CommandInterpreter {
     
     public static String overrideStringBuildHelper(String overrideVarName, String overrideVarValue) {
     	// Check if it's a box utilizing val.
+    	// Check if it's comma seperated
+    	// Maybe account for thread ints without the "".
+    	// 
+    	
+    	String builtString;
+    	
     	
     	// Example: - overrideVarName = scanName
     	//			- overrideVarValue = My First Scan
     	//
     	// 			builtString = "scanName":"My First Scan"
-    	String builtString = "\"" + overrideVarName + "\":\"" + overrideVarValue +"\", ";
+    	if boxedScanParamStrings.contains(overrideVarName){
+    		builtString = "\"" + overrideVarName + "\": [\"" + overrideVarValue +"\"], ";
+    	}
+    	else {
+    		builtString = "\"" + overrideVarName + "\":\"" + overrideVarValue +"\", ";
+    	}
+    	
     	return builtString;
     }
     
