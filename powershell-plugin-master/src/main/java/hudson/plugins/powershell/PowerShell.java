@@ -235,13 +235,18 @@ public class PowerShell extends CommandInterpreter {
     			{"startUrls": ["string"]}
      * 
      * Parameters: 
-     * > String overrideVarString: This is the literal string for the parameter name we're filling in.
+     * > String overrideVarName: This is the literal string for the parameter name we're filling in.
      * > String overrideVarValue: This is the value that was entered by the user from the Jenkins job page.
      */
     
-    public static String overrideStringBuildHelper(String overrideVarString, String overrideVarValue) {
+    public static String overrideStringBuildHelper(String overrideVarName, String overrideVarValue) {
     	// Check if it's a box utilizing val.
-    	String builtString = "\"" + overrideVarString + "\":\"" + overrideVarValue +"\", ";
+    	
+    	// Example: - overrideVarName = scanName
+    	//			- overrideVarValue = My First Scan
+    	//
+    	// 			builtString = "scanName":"My First Scan"
+    	String builtString = "\"" + overrideVarName + "\":\"" + overrideVarValue +"\", ";
     	return builtString;
     }
     
