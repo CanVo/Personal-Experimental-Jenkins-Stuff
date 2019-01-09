@@ -258,6 +258,7 @@ public class PowerShell extends CommandInterpreter {
     	// 			builtString = "scanName":"My First Scan"
     	if (boxedScanParamStrings.contains(overrideVarName)){
     	// *** IMPORTANT CHECK! If there is no provided values for parameters that use boxes, DO NOT INCLUDE BOXES.
+    	// Doing so results in the error: Index was out of range. Must be non-negative and less than the size of the collection.
     		if (overrideVarName.length() == 0) {
     			builtString = "\"" + overrideVarName + "\": \"" + overrideVarValue +"\", ";
     		}
