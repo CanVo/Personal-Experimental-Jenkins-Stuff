@@ -19,7 +19,7 @@ public class PowerShell extends CommandInterpreter {
 	private String ipInstance, settingsName, scanName, startUrls, crawlAuditMode, sharedThreads, crawlThreads, auditThreads, startOption, loginMacro, workFlowMacros, tcMarcoParameters, smartCredentials, networkCredentials, networkAuthenticationMode, allowedHosts, policyID, checkIDs, dontStartScan, scanScope, scopedPaths, clientCertification, storeName, isGlobal, serialNumber, bytes, reuseScan, scanId, mode;
 	private static String [] overrideScanParamStrings = {"scanName", "startUrls", "crawlAuditMode", "sharedThreads", "crawlThreads", "auditThreads", "startOption", "loginMacro", "workFlowMacros", "tcMarcoParameters", "smartCredentials", "networkCredentials", "networkAuthenticationMode", "allowedHosts", "policyID", "checkIDs", "dontStartScan", "scanScope", "scopedPaths", "clientCertification", "storeName", "isGlobal", "serialNumber", "bytes", "reuseScan", "scanId", "mode"};
 	// startUrls, WorkFlowMacros, SmartCredentials, networkCredentials, Allowed Hosts, CheckIDs, scopedPaths, 
-	private static String [] boxedScanParamStrings = {"startUrls", "workFlowMacros", "smartCredentials", "networkCredentials", "allowedHosts", "checkIDs", "scopedPaths"};
+	private static List boxedScanParamStrings = Arrays.asList("startUrls", "workFlowMacros", "smartCredentials", "networkCredentials", "allowedHosts", "checkIDs", "scopedPaths");
 	
 	
     @DataBoundConstructor
