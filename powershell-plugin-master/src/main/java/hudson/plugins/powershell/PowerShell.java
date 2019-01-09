@@ -263,10 +263,13 @@ public class PowerShell extends CommandInterpreter {
     			builtString = "\"" + overrideVarName + "\": \"" + overrideVarValue +"\", ";
     		}
     		else {
+    			// Account for comma strings here.
     			builtString = "\"" + overrideVarName + "\": [\"" + overrideVarValue +"\"], ";
     		}
     	else {
     		builtString = "\"" + overrideVarName + "\":\"" + overrideVarValue +"\", ";
+    	}
+    	
     	}
     	
     	return builtString;
